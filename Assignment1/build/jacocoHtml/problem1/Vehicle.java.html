@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Vehicle.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment1</a> &gt; <a href="index.source.html" class="el_package">problem1</a> &gt; <span class="el_source">Vehicle.java</span></div><h1>Vehicle.java</h1><pre class="source lang-java linenums">package problem1;
+/**
+ * Vehicle is a class represents a vehicle that has a unique Vehicle Identification Number (VIN), and corresponding
+ * license plate, and the owner information which includes owner's firsName, lastName and phoneNumber.
+ */
+public class Vehicle {
+    private int VIN;
+    private String licensePlate;
+    private Owner owner;
+
+    /**
+     * Constructor that creates a new vehicle object with the specified VIN and * license plate and owner info.
+     * @param VIN - VIN of the new Vehicle object.
+     * @param licensePlate - license plate of the new Vehicle.
+     * @param owner - vehicle's owner info.
+     */
+
+<span class="fc" id="L18">    public Vehicle(int VIN, String licensePlate, Owner owner) {</span>
+<span class="fc" id="L19">        this.VIN = VIN;</span>
+<span class="fc" id="L20">        this.licensePlate = licensePlate;</span>
+<span class="fc" id="L21">        this.owner = owner;</span>
+<span class="fc" id="L22">    }</span>
+
+    /**
+     * Returns the VIN of the Vehicle.
+     * * @return the VIN of the Vehicle.
+     */
+
+    public int getVIN() {
+<span class="fc" id="L30">        return this.VIN;</span>
+    }
+
+    /**
+     * Returns the licensePlate of the Vehicle
+     * * @return the licensePlate of the Vehicle
+     */
+
+    public String getLicensePlate() {
+<span class="fc" id="L39">        return this.licensePlate;</span>
+    }
+
+    /**
+     * Returns the firstName of the Owner
+     * * @return the firstName of the Owner
+     */
+
+    public String getFirstName() {
+<span class="fc" id="L48">        return this.owner.getFirstName();</span>
+    }
+
+    /**
+     * Returns the lastName of the Owner
+     * * @return the lastName of the Owner
+     */
+
+    public String getLastName() {
+<span class="fc" id="L57">        return this.owner.getLastName();</span>
+    }
+
+    /**
+     * Returns the phoneNumber of the Owner
+     * * @return the phoneNumber of the Owner
+     */
+
+    public String getPhoneNumber() {
+<span class="fc" id="L66">        return this.owner.getPhoneNumber();</span>
+    }
+
+    /**
+     * Sets the VIN of the Vehicle.
+     */
+
+    public void setVIN(int VIN) {
+<span class="fc" id="L74">        this.VIN = VIN;</span>
+<span class="fc" id="L75">    }</span>
+
+    /**
+     * Sets the licensePlate of the Vehicle.
+     */
+
+    public void setLicensePlate(String licensePlate) {
+<span class="fc" id="L82">        this.licensePlate = licensePlate;</span>
+<span class="fc" id="L83">    }</span>
+
+    /**
+     * Sets the firstName of the Owner.
+     */
+
+    public void setFirstName(String firstName) {
+<span class="nc" id="L90">        this.owner.setFirstName(firstName);</span>
+<span class="nc" id="L91">    }</span>
+
+    /**
+     * Sets the lastName of the Owner.
+     */
+
+    public void setLastName(String lastName) {
+<span class="fc" id="L98">        this.owner.setLastName(lastName);</span>
+<span class="fc" id="L99">    }</span>
+
+    /**
+     * Sets the phoneNumber of the Owner.
+     */
+
+    public void setPhoneNumber(String phoneNumber) {
+<span class="fc" id="L106">        this.owner.setPhoneNumber(phoneNumber);</span>
+<span class="fc" id="L107">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

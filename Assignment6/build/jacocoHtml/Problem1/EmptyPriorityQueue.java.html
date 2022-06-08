@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EmptyPriorityQueue.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment6</a> &gt; <a href="index.source.html" class="el_package">Problem1</a> &gt; <span class="el_source">EmptyPriorityQueue.java</span></div><h1>EmptyPriorityQueue.java</h1><pre class="source lang-java linenums">package Problem1;
+
+/**
+ * EmptyPriorityQueue class represent an empty PriorityQueue.
+ */
+public class EmptyPriorityQueue implements IPriorityQueue{
+<span class="fc" id="L7">  private static final Integer HASH = 31;</span>
+
+  /**
+   * Constructor for EmptyPriorityQueue.
+   */
+<span class="fc" id="L12">  public EmptyPriorityQueue() {</span>
+<span class="fc" id="L13">  }</span>
+
+  /**
+   * Check if the Priority Queue is empty or not.
+   * @return true if it's empty, false otherwise.
+   */
+  @Override
+  public Boolean isEmpty() {
+<span class="fc" id="L21">    return true;</span>
+  }
+
+  /**
+   * Adds the given element (the priority and its associated value) to the PQ.
+   * @param priority - an Integer represents Priority Queue's priority.
+   * @param value - a String represents Priority Queue's value.
+   * @return a new Priority Queue with the added element.
+   */
+  @Override
+  public PriorityQueue add(Integer priority, String value) {
+<span class="fc" id="L32">    Element ele = new Element(priority, value);</span>
+<span class="fc" id="L33">    return new PriorityQueue(ele, null);</span>
+  }
+
+  /**
+   * Find the value in the PQ that has the highest priority. If there are several same highest
+   * priority, then return all values that has the same highest priority.
+   * @return the value in the PQ that has the highest priority.
+   * @throws PeekOnEmptyPQException if the Priority Queue is empty.
+   */
+  @Override
+  public String peek() throws PeekOnEmptyPQException{
+<span class="fc" id="L44">    throw new PeekOnEmptyPQException();</span>
+  }
+
+  /**
+   * Remove the element that has the highest priority. If there are several same highest
+   * priority, then remove them all.
+   * @return a copy of the PQ without the element with the highest priority.
+   * @throws PopOnEmptyPQException if the Priority Queue is empty.
+   */
+  @Override
+  public PriorityQueue pop() throws PopOnEmptyPQException{
+<span class="fc" id="L55">    throw new PopOnEmptyPQException();</span>
+  }
+
+  @Override
+  public String toString() {
+<span class="fc" id="L60">    return &quot;EmptyPriorityQueue&quot;;</span>
+  }
+
+  @Override
+  public int hashCode() {
+<span class="fc" id="L65">    return HASH;</span>
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+<span class="fc bfc" id="L70" title="All 2 branches covered.">    if (this == obj)</span>
+<span class="fc" id="L71">      return true;</span>
+<span class="fc bfc" id="L72" title="All 4 branches covered.">    if (obj == null || this.getClass() != obj.getClass())</span>
+<span class="fc" id="L73">      return false;</span>
+<span class="fc" id="L74">    return true;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

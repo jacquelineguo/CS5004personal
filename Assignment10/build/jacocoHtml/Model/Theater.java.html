@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Theater.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment10</a> &gt; <a href="index.source.html" class="el_package">Model</a> &gt; <span class="el_source">Theater.java</span></div><h1>Theater.java</h1><pre class="source lang-java linenums">package Model;
+
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
+/**
+ * Theater class represents the movie theater that has row list, theater name, and wheelchair rows
+ * as it's fields.
+ */
+public class Theater {
+  private String theaterName;
+  private List&lt;Row&gt; rowList;
+  private List&lt;Integer&gt; wheelChairRows;
+<span class="fc" id="L15">  private static final Integer MINI_ROWS = 5;</span>
+<span class="fc" id="L16">  private static final Integer MAX_ROWS = 20;</span>
+<span class="fc" id="L17">  public static final Integer ZERO = 0;</span>
+  private static Theater instance;
+
+  /**
+   * Constructor for Theater class.
+   * @param theaterName - theater name.
+   * @param rowList - row list which represents the rows in the theater.
+   * @param wheelChairRows - wheelchair row number as a list.
+   * @throws IllegalArgumentException if the rows is not valid.
+   */
+  private Theater(String theaterName, List&lt;Row&gt; rowList, List&lt;Integer&gt; wheelChairRows) throws
+<span class="fc" id="L28">      IllegalArgumentException {</span>
+<span class="fc" id="L29">    this.theaterName = theaterName;</span>
+<span class="fc" id="L30">    this.checkRows(rowList);</span>
+<span class="fc" id="L31">    this.rowList = rowList;</span>
+<span class="fc" id="L32">    this.wheelChairRows = this.checkWheelChairRows(wheelChairRows);</span>
+<span class="fc" id="L33">    this.setWheelChairRow();</span>
+<span class="fc" id="L34">  }</span>
+
+  /**
+   * Generate a theater with the given fields.
+   * @param theaterName - theater name.
+   * @param rowList - row list which represents the rows in the theater.
+   * @param wheelChairRows - wheelchair row number as a list.
+   * @return a Theater class.
+   * @throws IllegalArgumentException if the rows is not valid.
+   */
+  public static Theater generateTheater(String theaterName, List&lt;Row&gt; rowList,
+      List&lt;Integer&gt; wheelChairRows) throws IllegalArgumentException{
+<span class="pc bpc" id="L46" title="1 of 2 branches missed.">    if (instance == null)</span>
+<span class="fc" id="L47">      return new Theater(theaterName, rowList, wheelChairRows);</span>
+<span class="nc" id="L48">    return instance;</span>
+  }
+
+  /**
+   * Helper method which helps set the wheelchair rows.
+   */
+  private void setWheelChairRow() {
+<span class="fc bfc" id="L55" title="All 2 branches covered.">    for (Integer row: this.wheelChairRows) {</span>
+<span class="fc" id="L56">      this.rowList.get(row - Row.ONE).setWheelchair();</span>
+<span class="fc" id="L57">    }</span>
+<span class="fc" id="L58">  }</span>
+
+  /**
+   * Helper method which helps check if the row list is valid.
+   * @param rowList - row list which represents the rows in the theater.
+   * @return true if it's valid, false otherwise.
+   * @throws IllegalArgumentException if the row list is not valid.
+   */
+  private Boolean checkRows(List&lt;Row&gt; rowList) throws IllegalArgumentException{
+<span class="pc bpc" id="L67" title="1 of 4 branches missed.">    if (rowList.size() &lt; MINI_ROWS || rowList.size() &gt; MAX_ROWS) {</span>
+<span class="fc" id="L68">      throw new IllegalArgumentException(&quot;The correct number of rows in the theater should be &quot;</span>
+          + &quot;between &quot; + MINI_ROWS + &quot; and &quot; + MAX_ROWS + &quot;!&quot;);
+    }
+<span class="fc" id="L71">    return true;</span>
+  }
+
+  /**
+   * Helper method which helps check if the wheelchair rows is valid.
+   * @param wheelChairRows - wheelchair row number as a list.
+   * @return true if the wheelchair rows is valid, false otherwise.
+   * @throws IllegalArgumentException it the the wheelchair rows is invalid.
+   */
+  private List&lt;Integer&gt; checkWheelChairRows(List&lt;Integer&gt; wheelChairRows) throws
+      IllegalArgumentException{
+<span class="fc bfc" id="L82" title="All 2 branches covered.">    if (wheelChairRows.size() &lt; Row.ONE) {</span>
+<span class="fc" id="L83">      throw new IllegalArgumentException(&quot;The rows for wheelchair should be at least &quot; +</span>
+          Row.ONE + &quot;!&quot;);
+    }
+<span class="fc" id="L86">    List&lt;Integer&gt; outOfBoundRows = wheelChairRows.stream().</span>
+<span class="pc bpc" id="L87" title="1 of 4 branches missed.">        filter(row -&gt; row &lt; Row.ONE || row &gt; this.rowList.size()).</span>
+<span class="fc" id="L88">        collect(Collectors.toList());</span>
+<span class="fc bfc" id="L89" title="All 2 branches covered.">    if (outOfBoundRows.size() != ZERO) {</span>
+<span class="fc" id="L90">      throw new IllegalArgumentException(&quot;Wheelchair rows should be in the bound! (Minimum: &quot; +</span>
+<span class="fc" id="L91">          Row.ONE + &quot;, Maximum: &quot; + this.rowList.size() + &quot;).&quot;);</span>
+    }
+<span class="fc" id="L93">    return wheelChairRows;</span>
+  }
+
+  /**
+   * Get the Theater name.
+   * @return the Theater name.
+   */
+  public String getTheaterName() {
+<span class="fc" id="L101">    return theaterName;</span>
+  }
+
+  /**
+   * Get the list of the rows.
+   * @return the list of the rows.
+   */
+  public List&lt;Row&gt; getRowList() {
+<span class="fc" id="L109">    return rowList;</span>
+  }
+
+  /**
+   * Get the list of row numbers of the wheelchair row.
+   * @return the list of row numbers of the wheelchair row.
+   */
+  public List&lt;Integer&gt; getWheelChairRows() {
+<span class="fc" id="L117">    return wheelChairRows;</span>
+  }
+
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L122" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L123">      return true;</span>
+    }
+<span class="fc bfc" id="L125" title="All 4 branches covered.">    if (o == null || this.getClass() != o.getClass()) {</span>
+<span class="fc" id="L126">      return false;</span>
+    }
+<span class="fc" id="L128">    Theater theater = (Theater) o;</span>
+<span class="fc bfc" id="L129" title="All 2 branches covered.">    return Objects.equals(getTheaterName(), theater.getTheaterName()) &amp;&amp; Objects</span>
+<span class="pc bpc" id="L130" title="1 of 2 branches missed.">        .equals(getRowList(), theater.getRowList()) &amp;&amp; Objects</span>
+<span class="pc bnc" id="L131" title="All 2 branches missed.">        .equals(getWheelChairRows(), theater.getWheelChairRows());</span>
+  }
+
+  @Override
+  public int hashCode() {
+<span class="fc" id="L136">    return Objects.hash(getTheaterName(), getRowList(), getWheelChairRows());</span>
+  }
+
+  @Override
+  public String toString() {
+<span class="fc" id="L141">    return &quot;Theater{&quot; +</span>
+        &quot;theaterName='&quot; + theaterName + '\'' +
+        &quot;, rowList=&quot; + rowList +
+        &quot;, wheelChairRows=&quot; + wheelChairRows +
+        '}';
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

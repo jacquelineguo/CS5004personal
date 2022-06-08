@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.26.0" timestamp="2021-01-27T02:58:21.983">
+<file name="/Users/jacquelineguo/Documents/Northeastern University/Spring 2021/CS 5004/Xuan_Guo_repository/Assignment1/src/test/java/problem2/TimeTest.java">
+<violation beginline="82" endline="101" begincolumn="12" endcolumn="5" rule="SuspiciousEqualsMethodName" ruleset="Error Prone" package="problem2" class="TimeTest" method="equals" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#suspiciousequalsmethodname" priority="2">
+The method name and parameter number are suspiciously close to equals(Object)
+</violation>
+</file>
+</pmd>

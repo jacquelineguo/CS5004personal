@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AbstractFullTime.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">midterm</a> &gt; <a href="index.source.html" class="el_package">Problem1</a> &gt; <span class="el_source">AbstractFullTime.java</span></div><h1>AbstractFullTime.java</h1><pre class="source lang-java linenums">package Problem1;
+
+import java.time.LocalDate;
+import java.time.Period;
+
+public abstract class AbstractFullTime extends AbstractEmployee{
+  protected Double basePay;
+  protected Double bonuses;
+  protected Double overtimePay;
+  protected LocalDate lastPromotionDate;
+  protected Integer numOfProjects;
+<span class="fc" id="L12">  private static final Integer LOWER_BOUND = 3;</span>
+<span class="fc" id="L13">  private static final Integer PROJECT_UPPER = 7;</span>
+<span class="fc" id="L14">  private static final Double PROJECT_BONUS = 1.2;</span>
+<span class="fc" id="L15">  private static final Double PROMOTION_PENALTY = 0.8;</span>
+
+  public AbstractFullTime(String employeeID, ContactInfo contactInfo, LocalDate employmentDate,
+      EducationLevel educationLevel, EmploymentLevel employmentLevel, Double lastYearEarning,
+      Double basePay, Double bonuses, Double overtimePay, LocalDate lastPromotionDate,
+      Integer numOfProjects) {
+<span class="fc" id="L21">    super(employeeID, contactInfo, employmentDate, educationLevel,</span>
+        employmentLevel, lastYearEarning);
+
+<span class="fc" id="L24">    this.basePay = basePay;</span>
+<span class="fc" id="L25">    this.bonuses = bonuses;</span>
+<span class="fc" id="L26">    this.overtimePay = overtimePay;</span>
+<span class="fc" id="L27">    this.lastPromotionDate = lastPromotionDate;</span>
+<span class="fc" id="L28">    this.numOfProjects = numOfProjects;</span>
+<span class="fc" id="L29">  }</span>
+
+  @Override
+  public Double estimateProductivity() {
+<span class="fc" id="L33">    return super.estimateProductivity() + this.projectsBonus() - promotionPenalty();</span>
+  }
+
+  @Override
+  protected Double baseProductivity() {
+<span class="fc" id="L38">    return this.lastYearEarning / this.basePay;</span>
+  }
+
+  private Double projectsBonus() {
+<span class="pc bpc" id="L42" title="1 of 4 branches missed.">    if (this.numOfProjects &gt; LOWER_BOUND &amp;&amp; this.numOfProjects &lt; PROJECT_UPPER) {</span>
+<span class="fc" id="L43">      return PROJECT_BONUS;</span>
+    }
+<span class="fc" id="L45">    return NO_BONUS;</span>
+  }
+
+  private Double promotionPenalty() {
+<span class="fc" id="L49">    LocalDate today = LocalDate.now();</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">    if (Period.between(this.lastPromotionDate, today).getYears() &gt; LOWER_BOUND) {</span>
+<span class="fc" id="L51">      return PROMOTION_PENALTY;</span>
+    }
+<span class="fc" id="L53">    return NO_BONUS;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

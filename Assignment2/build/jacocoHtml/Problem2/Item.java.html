@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Item.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment2</a> &gt; <a href="index.source.html" class="el_package">Problem2</a> &gt; <span class="el_source">Item.java</span></div><h1>Item.java</h1><pre class="source lang-java linenums">package Problem2;
+
+/**
+ * The Item class representing a mail item with the item's width, height, depth, and recipient info.
+ */
+public class Item {
+  private int width;
+  private int height;
+  private int depth;
+  private Recipient recipient;
+  private static final int SIZELIMIT = 1;
+
+  /**
+   * Constructor for Item class.
+   * @param width - the width of the mail item.
+   * @param height - the height of the mail item.
+   * @param depth - the depth of the mail item.
+   * @param recipient - the item's recipient.
+   * @throws InvalidSizeDimensionException if the width, height, and depth of the item is invalid.
+   */
+  public Item(int width, int height, int depth, Recipient recipient)
+<span class="fc" id="L22">      throws InvalidSizeDimensionException {</span>
+<span class="fc bfc" id="L23" title="All 2 branches covered.">    if (this.isValidWidth(width)) {</span>
+<span class="fc" id="L24">      this.width = width;</span>
+    }
+    else {
+<span class="fc" id="L27">      throw new InvalidSizeDimensionException();</span>
+    }
+<span class="fc bfc" id="L29" title="All 2 branches covered.">    if (this.isValidHeight(height)) {</span>
+<span class="fc" id="L30">      this.height = height;</span>
+    }
+    else {
+<span class="fc" id="L33">      throw new InvalidSizeDimensionException();</span>
+    }
+<span class="fc bfc" id="L35" title="All 2 branches covered.">    if (this.isValidDepth(depth)) {</span>
+<span class="fc" id="L36">      this.depth = depth;</span>
+    }
+    else {
+<span class="fc" id="L39">      throw new InvalidSizeDimensionException();</span>
+    }
+<span class="fc" id="L41">    this.recipient = recipient;</span>
+<span class="fc" id="L42">  }</span>
+
+  /**
+   * Helper method to validate the item's width.
+   * @param width - the width of the mail item.
+   * @return true if the width is valid, false otherwise.
+   */
+  private boolean isValidWidth(int width) {
+<span class="fc bfc" id="L50" title="All 2 branches covered.">    return width &gt;= SIZELIMIT;</span>
+  }
+
+  /**
+   * Helper method to validate the item's height.
+   * @param height - the height of the mail item.
+   * @return true if the height is valid, false otherwise.
+   */
+  private boolean isValidHeight(int height) {
+<span class="fc bfc" id="L59" title="All 2 branches covered.">    return height &gt;= SIZELIMIT;</span>
+  }
+
+  /**
+   * Helper method to validate the item's depth.
+   * @param depth - the width of the mail item.
+   * @return true if the depth is valid, false otherwise.
+   */
+  private boolean isValidDepth(int depth) {
+<span class="fc bfc" id="L68" title="All 2 branches covered.">    return depth &gt;= SIZELIMIT;</span>
+  }
+
+  /**
+   * Get the width of the item.
+   * @return width of the item.
+   */
+  public int getWidth() {
+<span class="fc" id="L76">    return this.width;</span>
+  }
+
+  /**
+   * Get the height of the item.
+   * @return height of the item.
+   */
+  public int getHeight() {
+<span class="fc" id="L84">    return this.height;</span>
+  }
+
+  /**
+   * Get the depth of the item.
+   * @return depth of the item.
+   */
+  public int getDepth() {
+<span class="fc" id="L92">    return this.depth;</span>
+  }
+
+  /**
+   * Get the recipient of the item.
+   * @return recipient of the item.
+   */
+  public Recipient getRecipient() {
+<span class="fc" id="L100">    return this.recipient;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

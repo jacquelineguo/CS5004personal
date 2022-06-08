@@ -1,0 +1,24 @@
+Problem1/Artist.java
+ Problem1.Artist
+Problem1/InvalidAgeException.java
+ Problem1.InvalidAgeException
+Problem1/AbstractFilmArtist.java
+ Problem1.AbstractFilmArtist
+Problem1/Actor.java
+ Problem1.Actor
+Problem1/AbstractVisualArtist.java
+ Problem1.AbstractVisualArtist
+Problem1/Painter.java
+ Problem1.Painter
+Problem1/Dancer.java
+ Problem1.Dancer
+Problem1/AbstractArtist.java
+ Problem1.AbstractArtist
+Problem1/Filmmaker.java
+ Problem1.Filmmaker
+Problem1/Photographer.java
+ Problem1.Photographer
+Problem1/Musician.java
+ Problem1.Musician
+Problem1/Poet.java
+ Problem1.Poet

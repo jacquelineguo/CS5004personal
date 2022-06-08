@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.26.0" timestamp="2021-02-10T01:59:30.714">
+<file name="/Users/jacquelineguo/Documents/Northeastern University/Spring 2021/CS 5004/Xuan_Guo_repository/Assignment3/src/main/java/Problem1/AbstractServices.java">
+<violation beginline="37" endline="37" begincolumn="9" endcolumn="35" rule="ConstructorCallsOverridableMethod" ruleset="Error Prone" package="Problem1" class="AbstractServices" method="AbstractServices" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#constructorcallsoverridablemethod" priority="1">
+Overridable method 'isNegative' called during object construction
+</violation>
+<violation beginline="78" endline="78" begincolumn="37" endcolumn="41" rule="AvoidReassigningParameters" ruleset="Best Practices" package="Problem1" class="AbstractServices" method="giveDiscount" variable="price" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_bestpractices.html#avoidreassigningparameters" priority="2">
+Avoid reassigning parameters such as 'price'
+</violation>
+<violation beginline="78" endline="78" begincolumn="37" endcolumn="41" rule="AvoidReassigningParameters" ruleset="Best Practices" package="Problem1" class="AbstractServices" method="giveDiscount" variable="price" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_bestpractices.html#avoidreassigningparameters" priority="2">
+Avoid reassigning parameters such as 'price'
+</violation>
+<violation beginline="93" endline="93" begincolumn="36" endcolumn="40" rule="AvoidReassigningParameters" ruleset="Best Practices" package="Problem1" class="AbstractServices" method="roundPrice" variable="price" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_bestpractices.html#avoidreassigningparameters" priority="2">
+Avoid reassigning parameters such as 'price'
+</violation>
+<violation beginline="93" endline="93" begincolumn="36" endcolumn="40" rule="AvoidReassigningParameters" ruleset="Best Practices" package="Problem1" class="AbstractServices" method="roundPrice" variable="price" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_bestpractices.html#avoidreassigningparameters" priority="2">
+Avoid reassigning parameters such as 'price'
+</violation>
+<violation beginline="94" endline="94" begincolumn="13" endcolumn="19" rule="LocalVariableNamingConventions" ruleset="Code Style" package="Problem1" class="AbstractServices" method="roundPrice" variable="HUNDRED" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_codestyle.html#localvariablenamingconventions" priority="1">
+The local variable name 'HUNDRED' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="94" endline="94" begincolumn="13" endcolumn="19" rule="VariableNamingConventions" ruleset="Code Style" package="Problem1" class="AbstractServices" method="roundPrice" variable="HUNDRED" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_codestyle.html#variablenamingconventions" priority="1">
+Variables should start with a lowercase character, 'HUNDRED' starts with uppercase character.
+</violation>
+<violation beginline="106" endline="106" begincolumn="13" endcolumn="16" rule="LocalVariableNamingConventions" ruleset="Code Style" package="Problem1" class="AbstractServices" method="tenthDiscount" variable="HALF" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_codestyle.html#localvariablenamingconventions" priority="1">
+The local variable name 'HALF' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="106" endline="106" begincolumn="13" endcolumn="16" rule="VariableNamingConventions" ruleset="Code Style" package="Problem1" class="AbstractServices" method="tenthDiscount" variable="HALF" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_codestyle.html#variablenamingconventions" priority="1">
+Variables should start with a lowercase character, 'HALF' starts with uppercase character.
+</violation>
+</file>
+<file name="/Users/jacquelineguo/Documents/Northeastern University/Spring 2021/CS 5004/Xuan_Guo_repository/Assignment3/src/main/java/Problem1/AbstractSpecialist.java">
+<violation beginline="11" endline="11" begincolumn="18" endcolumn="34" rule="VariableNamingConventions" ruleset="Code Style" package="Problem1" class="AbstractSpecialist" variable="RATE_PER_EMPLOYEE" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_codestyle.html#variablenamingconventions" priority="1">
+Only variables that are final should contain underscores (except for underscores in standard prefix/suffix), 'RATE_PER_EMPLOYEE' is not final.
+</violation>
+<violation beginline="11" endline="11" begincolumn="18" endcolumn="34" rule="FieldNamingConventions" ruleset="Code Style" package="Problem1" class="AbstractSpecialist" variable="RATE_PER_EMPLOYEE" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_codestyle.html#fieldnamingconventions" priority="1">
+The field name 'RATE_PER_EMPLOYEE' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="11" endline="11" begincolumn="18" endcolumn="34" rule="VariableNamingConventions" ruleset="Code Style" package="Problem1" class="AbstractSpecialist" variable="RATE_PER_EMPLOYEE" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_codestyle.html#variablenamingconventions" priority="1">
+Variables should start with a lowercase character, 'RATE_PER_EMPLOYEE' starts with uppercase character.
+</violation>
+</file>
+<file name="/Users/jacquelineguo/Documents/Northeastern University/Spring 2021/CS 5004/Xuan_Guo_repository/Assignment3/src/main/java/Problem1/WindowCleaning.java">
+<violation beginline="54" endline="54" begincolumn="37" endcolumn="41" rule="AvoidReassigningParameters" ruleset="Best Practices" package="Problem1" class="WindowCleaning" method="addFloorFee" variable="price" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_bestpractices.html#avoidreassigningparameters" priority="2">
+Avoid reassigning parameters such as 'price'
+</violation>
+<violation beginline="55" endline="55" begincolumn="12" endcolumn="22" rule="VariableNamingConventions" ruleset="Code Style" package="Problem1" class="WindowCleaning" method="addFloorFee" variable="FLOOR_ADDON" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_codestyle.html#variablenamingconventions" priority="1">
+Only variables that are final should contain underscores (except for underscores in standard prefix/suffix), 'FLOOR_ADDON' is not final.
+</violation>
+<violation beginline="55" endline="55" begincolumn="12" endcolumn="22" rule="LocalVariableNamingConventions" ruleset="Code Style" package="Problem1" class="WindowCleaning" method="addFloorFee" variable="FLOOR_ADDON" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_codestyle.html#localvariablenamingconventions" priority="1">
+The local variable name 'FLOOR_ADDON' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="55" endline="55" begincolumn="12" endcolumn="22" rule="VariableNamingConventions" ruleset="Code Style" package="Problem1" class="WindowCleaning" method="addFloorFee" variable="FLOOR_ADDON" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_codestyle.html#variablenamingconventions" priority="1">
+Variables should start with a lowercase character, 'FLOOR_ADDON' starts with uppercase character.
+</violation>
+</file>
+</pmd>

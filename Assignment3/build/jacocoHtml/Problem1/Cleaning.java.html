@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Cleaning.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment3</a> &gt; <a href="index.source.html" class="el_package">Problem1</a> &gt; <span class="el_source">Cleaning.java</span></div><h1>Cleaning.java</h1><pre class="source lang-java linenums">package Problem1;
+/**
+ * Represent Cleaning services class.
+ */
+public class Cleaning extends AbstractInterior{
+
+  /**
+   * Constructor for Cleaning class.
+   * @param invoiceID - invoice ID of the service.
+   * @param address - service address.
+   * @param size - property size which could be small, medium, or large.
+   * @param monthly - is a monthly service.
+   * @param previousService - the previous service the property got.
+   * @param numOfPets - number of pets in the property.
+   */
+  public Cleaning(String invoiceID, String address, PropertySize size, boolean monthly,
+      Integer previousService, Integer numOfPets) {
+<span class="fc" id="L18">    super(invoiceID, address, size, monthly, previousService, numOfPets);</span>
+<span class="fc" id="L19">  }</span>
+
+  /**
+   * Calculates price for cleaning service.
+   * @return the price for cleaning service.
+   */
+  @Override
+  public double calculatePrice() {
+<span class="fc" id="L27">    return giveDiscount(petCost(super.calculatePrice()));</span>
+  }
+
+  @Override
+  public String toString() {
+<span class="fc" id="L32">    return &quot;Cleaning: &quot; + super.toString();</span>
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+<span class="fc" id="L37">    return super.equals(obj);</span>
+  }
+
+  @Override
+  public int hashCode() {
+<span class="fc" id="L42">    return super.hashCode();</span>
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

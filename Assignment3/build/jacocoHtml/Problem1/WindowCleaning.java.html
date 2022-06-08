@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>WindowCleaning.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment3</a> &gt; <a href="index.source.html" class="el_package">Problem1</a> &gt; <span class="el_source">WindowCleaning.java</span></div><h1>WindowCleaning.java</h1><pre class="source lang-java linenums">package Problem1;
+
+/**
+ * Represent WindowCleaning services class.
+ */
+public class WindowCleaning extends AbstractExterior{
+  private Integer numOfFloor;
+<span class="fc" id="L8">  private static final Integer MAX_FLOOR = 3;</span>
+<span class="fc" id="L9">  private static final Integer FLOOR_BOUND = 1;</span>
+
+  /**
+   * Constructor for WindowCleaning service class.
+   * @param invoiceID - invoice ID of the service.
+   * @param address - service address.
+   * @param size - property size which could be small, medium, or large.
+   * @param monthly - is a monthly service.
+   * @param previousService - the previous service the property got.
+   * @param numOfFloor - floor numbers.
+   * @throws InvalidNumOfFloorException if the floor number is not valid.
+   */
+  public WindowCleaning(String invoiceID, String address, PropertySize size, boolean monthly,
+      Integer previousService, Integer numOfFloor) throws InvalidNumOfFloorException{
+<span class="fc" id="L23">    super(invoiceID, address, size, monthly, previousService);</span>
+
+<span class="pc bpc" id="L25" title="1 of 4 branches missed.">    if (numOfFloor &lt;= MAX_FLOOR &amp;&amp; numOfFloor &gt;= FLOOR_BOUND) {</span>
+<span class="fc" id="L26">      this.numOfFloor = numOfFloor;</span>
+    }
+    else {
+<span class="fc" id="L29">      throw new InvalidNumOfFloorException();</span>
+    }
+<span class="fc" id="L31">  }</span>
+
+  /**
+   * Get number of floor.
+   * @return the number of floor.
+   */
+  public Integer getNumOfFloor() {
+<span class="fc" id="L38">    return this.numOfFloor;</span>
+  }
+
+  /**
+   * Calculates the price of window cleaning services.
+   * @return the price of window cleaning services.
+   */
+  public double calculatePrice() {
+<span class="fc" id="L46">    return giveDiscount(addFloorFee(super.calculatePrice()));</span>
+  }
+
+  /**
+   * Calculates the additional floor fee.
+   * @param price - service price.
+   * @return the additional floor plus service fee.
+   */
+  private double addFloorFee(double price) {
+<span class="fc" id="L55">    double FLOOR_ADDON = 0.05;</span>
+<span class="fc bfc" id="L56" title="All 2 branches covered.">    if (this.numOfFloor &gt; FLOOR_BOUND) {</span>
+<span class="fc" id="L57">      price = price * FLOOR_ADDON + price;</span>
+    }
+<span class="fc" id="L59">    return price;</span>
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+<span class="fc bfc" id="L64" title="All 2 branches covered.">    if (this == obj) {</span>
+<span class="fc" id="L65">      return true;</span>
+    }
+<span class="pc bpc" id="L67" title="1 of 4 branches missed.">    if (obj == null || getClass() != obj.getClass()) {</span>
+<span class="fc" id="L68">      return false;</span>
+    }
+<span class="fc bfc" id="L70" title="All 2 branches covered.">    if (!super.equals(obj)) {</span>
+<span class="fc" id="L71">      return false;</span>
+    }
+<span class="fc" id="L73">    WindowCleaning that = (WindowCleaning) obj;</span>
+<span class="fc" id="L74">    return this.numOfFloor.equals(that.numOfFloor);</span>
+  }
+
+  @Override
+  public int hashCode() {
+<span class="fc" id="L79">    return super.hashCode();</span>
+  }
+
+  @Override
+  public String toString() {
+<span class="fc" id="L84">    return &quot;Window cleaning: &quot; + super.toString() + &quot; number of floor=&quot; + this.numOfFloor;</span>
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

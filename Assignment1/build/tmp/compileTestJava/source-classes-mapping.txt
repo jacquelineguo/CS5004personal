@@ -1,0 +1,12 @@
+problem1/VehicleTest.java
+ problem1.VehicleTest
+problem3/AmountTest.java
+ problem3.AmountTest
+problem3/AccountTest.java
+ problem3.AccountTest
+problem2/TripTest.java
+ problem2.TripTest
+problem1/OwnerTest.java
+ problem1.OwnerTest
+problem2/TimeTest.java
+ problem2.TimeTest

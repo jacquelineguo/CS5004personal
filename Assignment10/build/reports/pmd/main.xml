@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.26.0" timestamp="2021-04-30T03:01:39.196">
+<file name="/Users/jacquelineguo/Documents/Northeastern University/Spring 2021/CS 5004/Xuan_Guo_repository/Assignment10/src/main/java/Controller/DisplayTheater.java">
+<violation beginline="32" endline="32" begincolumn="5" endcolumn="20" rule="SystemPrintln" ruleset="Best Practices" package="Controller" class="DisplayTheater" method="displayRows" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_bestpractices.html#systemprintln" priority="2">
+System.out.print is used
+</violation>
+<violation beginline="41" endline="41" begincolumn="5" endcolumn="22" rule="SystemPrintln" ruleset="Best Practices" package="Controller" class="DisplayTheater" method="displayRows" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_bestpractices.html#systemprintln" priority="2">
+System.out.println is used
+</violation>
+<violation beginline="52" endline="52" begincolumn="7" endcolumn="22" rule="SystemPrintln" ruleset="Best Practices" package="Controller" class="DisplayTheater" method="displaySeats" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_bestpractices.html#systemprintln" priority="2">
+System.out.print is used
+</violation>
+<violation beginline="54" endline="54" begincolumn="7" endcolumn="22" rule="SystemPrintln" ruleset="Best Practices" package="Controller" class="DisplayTheater" method="displaySeats" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_bestpractices.html#systemprintln" priority="2">
+System.out.print is used
+</violation>
+</file>
+<file name="/Users/jacquelineguo/Documents/Northeastern University/Spring 2021/CS 5004/Xuan_Guo_repository/Assignment10/src/main/java/Controller/Interaction.java">
+<violation beginline="39" endline="39" begincolumn="7" endcolumn="24" rule="SystemPrintln" ruleset="Best Practices" package="Controller" class="Interaction" method="makeAction" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_bestpractices.html#systemprintln" priority="2">
+System.out.println is used
+</violation>
+<violation beginline="52" endline="52" begincolumn="13" endcolumn="30" rule="SystemPrintln" ruleset="Best Practices" package="Controller" class="Interaction" method="makeAction" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_bestpractices.html#systemprintln" priority="2">
+System.out.println is used
+</violation>
+<violation beginline="55" endline="55" begincolumn="13" endcolumn="30" rule="SystemPrintln" ruleset="Best Practices" package="Controller" class="Interaction" method="makeAction" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_bestpractices.html#systemprintln" priority="2">
+System.out.println is used
+</violation>
+<violation beginline="57" endline="57" begincolumn="13" endcolumn="30" rule="SystemPrintln" ruleset="Best Practices" package="Controller" class="Interaction" method="makeAction" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_bestpractices.html#systemprintln" priority="2">
+System.out.println is used
+</violation>
+<violation beginline="70" endline="70" begincolumn="15" endcolumn="32" rule="SystemPrintln" ruleset="Best Practices" package="Controller" class="Interaction" method="makeAction" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_bestpractices.html#systemprintln" priority="2">
+System.out.println is used
+</violation>
+<violation beginline="75" endline="75" begincolumn="15" endcolumn="32" rule="SystemPrintln" ruleset="Best Practices" package="Controller" class="Interaction" method="makeAction" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_bestpractices.html#systemprintln" priority="2">
+System.out.println is used
+</violation>
+<violation beginline="83" endline="83" begincolumn="5" endcolumn="22" rule="SystemPrintln" ruleset="Best Practices" package="Controller" class="Interaction" method="makeAction" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_bestpractices.html#systemprintln" priority="2">
+System.out.println is used
+</violation>
+<violation beginline="101" endline="101" begincolumn="11" endcolumn="19" rule="AvoidBranchingStatementAsLastInLoop" ruleset="Error Prone" package="Controller" class="Interaction" method="findRow" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidbranchingstatementaslastinloop" priority="2">
+Avoid using a branching statement as the last in a loop.
+</violation>
+<violation beginline="101" endline="101" begincolumn="11" endcolumn="19" rule="AvoidBranchingStatementAsLastInLoop" ruleset="Error Prone" package="Controller" class="Interaction" method="findRow" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidbranchingstatementaslastinloop" priority="2">
+Avoid using a branching statement as the last in a loop.
+</violation>
+</file>
+<file name="/Users/jacquelineguo/Documents/Northeastern University/Spring 2021/CS 5004/Xuan_Guo_repository/Assignment10/src/main/java/Controller/ReservationsService.java">
+<violation beginline="136" endline="136" begincolumn="64" endcolumn="71" rule="AvoidReassigningParameters" ruleset="Best Practices" package="Controller" class="ReservationsService" method="switchRow" variable="startRow" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_bestpractices.html#avoidreassigningparameters" priority="2">
+Avoid reassigning parameters such as 'startRow'
+</violation>
+<violation beginline="136" endline="136" begincolumn="64" endcolumn="71" rule="AvoidReassigningParameters" ruleset="Best Practices" package="Controller" class="ReservationsService" method="switchRow" variable="startRow" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_bestpractices.html#avoidreassigningparameters" priority="2">
+Avoid reassigning parameters such as 'startRow'
+</violation>
+</file>
+<file name="/Users/jacquelineguo/Documents/Northeastern University/Spring 2021/CS 5004/Xuan_Guo_repository/Assignment10/src/main/java/View/ReservationSystem.java">
+<violation beginline="16" endline="16" begincolumn="19" endcolumn="24" rule="LocalVariableNamingConventions" ruleset="Code Style" package="View" class="ReservationSystem" method="main" variable="OFFSET" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_codestyle.html#localvariablenamingconventions" priority="1">
+The final local variable name 'OFFSET' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+</file>
+</pmd>

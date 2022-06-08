@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ToDoList.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">HW9</a> &gt; <a href="index.source.html" class="el_package">Model</a> &gt; <span class="el_source">ToDoList.java</span></div><h1>ToDoList.java</h1><pre class="source lang-java linenums">package Model;
+
+import Controller.Commands;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import static Controller.Commands.INDEX_TWO;
+
+/**
+ * ToDoList class represent the collection of ToDos.
+ */
+public class ToDoList implements IToDoList{
+
+  private List&lt;ToDo&gt; toDoList;
+  private List&lt;ToDo&gt; partialList;
+<span class="fc" id="L16">  private static final Integer OFF_SET = 1;</span>
+
+  /**
+   * Constructor for ToDoList class.
+   */
+<span class="fc" id="L21">  public ToDoList() {</span>
+
+<span class="fc" id="L23">    this.toDoList = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L24">    this.partialList = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L25">  }</span>
+
+  /**
+   * Add a new ToDo into the collection.
+   * @param toDo - new ToDo to be added.
+   */
+  public void addToDo(ToDo toDo) {
+<span class="fc" id="L32">    this.toDoList.add(toDo);</span>
+<span class="fc" id="L33">    toDo.setId(this.getId(toDo));</span>
+
+<span class="fc" id="L35">  }</span>
+
+  /**
+   * Get the id of ToDo in the list when first generate.
+   * @param todo - the ToDo needs to find id.
+   * @return ID of the requested ToDo.
+   */
+  public Integer getId(ToDo todo) {
+<span class="fc" id="L43">    return this.toDoList.indexOf(todo) + OFF_SET;</span>
+  }
+
+  /**
+   * Get the collection as a List of ToDos.
+   * @return the collection as a List of ToDos.
+   */
+  public List&lt;ToDo&gt; getToDoList() {
+<span class="fc" id="L51">    return this.toDoList;</span>
+  }
+
+  /**
+   * Filter a list by different conditions.
+   * @param condition - filter conditions.
+   * @param category - filter category.
+   * @return a new list after filter.
+   */
+  public List&lt;ToDo&gt; filter(String condition, String category) {
+<span class="fc bfc" id="L61" title="All 2 branches covered.">    if (condition.contains(Commands.SHOW_INCOMPLETE.substring(INDEX_TWO)))</span>
+<span class="fc" id="L62">      return this.filterByIncomplete();</span>
+<span class="pc bpc" id="L63" title="1 of 2 branches missed.">    if (condition.contains(Commands.SHOW_CATEGORY.substring(INDEX_TWO))) {</span>
+<span class="fc" id="L64">      return filterByCategory(category);</span>
+    }
+<span class="nc" id="L66">    return this.partialList;</span>
+  }
+
+  /**
+   * Helper method which helps to filter the incomplete ToDos in the ToDoList.
+   * @return a new list after filter.
+   */
+  private List&lt;ToDo&gt; filterByIncomplete() {
+<span class="fc bfc" id="L74" title="All 2 branches covered.">    for (ToDo toDo: this.toDoList) {</span>
+<span class="fc bfc" id="L75" title="All 2 branches covered.">      if (!toDo.isCompleted()) {</span>
+<span class="fc" id="L76">        this.partialList.add(toDo);</span>
+      }
+<span class="fc" id="L78">    }</span>
+<span class="fc" id="L79">    return this.partialList;</span>
+  }
+
+  /**
+   * Helper method which helps filter the ToDos in ToDoList by different category.
+   * @param category - the category for filter.
+   * @return a new list after filter.
+   */
+  private List&lt;ToDo&gt; filterByCategory(String category) {
+<span class="fc bfc" id="L88" title="All 2 branches covered.">    for (ToDo toDo: this.toDoList) {</span>
+<span class="fc bfc" id="L89" title="All 4 branches covered.">      if (toDo.getCategory()!= null &amp;&amp; toDo.getCategory().equals(category)) {</span>
+<span class="fc" id="L90">        this.partialList.add(toDo);</span>
+      }
+<span class="fc" id="L92">    }</span>
+<span class="fc" id="L93">    return this.partialList;</span>
+  }
+
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L98" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L99">      return true;</span>
+    }
+<span class="pc bpc" id="L101" title="1 of 4 branches missed.">    if (o == null || this.getClass() != o.getClass()) {</span>
+<span class="fc" id="L102">      return false;</span>
+    }
+<span class="fc" id="L104">    ToDoList toDoList1 = (ToDoList) o;</span>
+<span class="pc bpc" id="L105" title="1 of 2 branches missed.">    return Objects.equals(getToDoList(), toDoList1.getToDoList()) &amp;&amp; Objects</span>
+<span class="pc bnc" id="L106" title="All 2 branches missed.">        .equals(this.partialList, toDoList1.partialList);</span>
+  }
+
+  @Override
+  public int hashCode() {
+<span class="fc" id="L111">    return Objects.hash(getToDoList(), this.partialList);</span>
+  }
+
+  @Override
+  public String toString() {
+<span class="fc" id="L116">    return &quot;ToDoList{&quot; +</span>
+        &quot;toDoList=&quot; + this.toDoList +
+        &quot;, partialList=&quot; + this.partialList +
+        '}';
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

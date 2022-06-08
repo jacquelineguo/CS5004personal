@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Controller.CommandLineParserTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2021-04-23T12:44:56" hostname="Jacquelines-MacBook-Pro.local" time="0.003">
+  <properties/>
+  <testcase name="testMissingCsvException" classname="Controller.CommandLineParserTest" time="0.001"/>
+  <testcase name="testToString" classname="Controller.CommandLineParserTest" time="0.0"/>
+  <testcase name="getParameters" classname="Controller.CommandLineParserTest" time="0.0"/>
+  <testcase name="testMissingTodoTextException" classname="Controller.CommandLineParserTest" time="0.0"/>
+  <testcase name="testHashCode" classname="Controller.CommandLineParserTest" time="0.0"/>
+  <testcase name="testEquals" classname="Controller.CommandLineParserTest" time="0.0"/>
+  <testcase name="getCommands" classname="Controller.CommandLineParserTest" time="0.001"/>
+  <testcase name="testMultipleSortException" classname="Controller.CommandLineParserTest" time="0.0"/>
+  <testcase name="testInvalidPriorityException" classname="Controller.CommandLineParserTest" time="0.0"/>
+  <system-out><![CDATA[{--csv-file=todos.csv, due=2020/09/21, todo-text=hw}
+{--csv-file=todos.csv, due=2020/09/21, todo-text=hw}
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

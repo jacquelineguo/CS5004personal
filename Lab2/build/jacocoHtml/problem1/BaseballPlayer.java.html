@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BaseballPlayer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Lab2</a> &gt; <a href="index.source.html" class="el_package">problem1</a> &gt; <span class="el_source">BaseballPlayer.java</span></div><h1>BaseballPlayer.java</h1><pre class="source lang-java linenums">package problem1;
+/**
+ * Class BaseballPlayer represents a baseball player.
+ */
+public class BaseballPlayer extends Athlete{
+  private String team;
+  private Double averageBatting;
+  private Integer seasonHomeRuns;
+
+  /**
+   * Constructor for a BaseballPlayer
+   *
+   * @param athletesName athlete's name
+   * @param height athlete's height
+   * @param weight athlete's weight
+   * @param league athlete's league
+   * @param team athlete's team
+   * @param averageBatting athlete's batting average
+   * @param seasonHomeRuns number of home runs the athlete has in the season.
+   */
+  public BaseballPlayer(Name athletesName, Double height, Double weight, String league, String team,
+      Double averageBatting, Integer seasonHomeRuns) {
+<span class="nc" id="L23">    super(athletesName, height, weight, league);</span>
+<span class="nc" id="L24">    this.team = team;</span>
+<span class="nc" id="L25">    this.averageBatting = averageBatting;</span>
+<span class="nc" id="L26">    this.seasonHomeRuns = seasonHomeRuns;</span>
+<span class="nc" id="L27">  }</span>
+
+  /**
+  * Constructor for a BaseballPlayer
+   *
+   * @param athletesName athlete's name
+   * @param height athlete's height
+   * @param weight athlete's weight
+   * @param team athlete's team
+   * @param averageBatting athlete's batting average
+   * @param seasonHomeRuns number of home runs the athlete has in the season.
+   */
+  public BaseballPlayer(Name athletesName, Double height, Double weight, String team, Double averageBatting,
+      Integer seasonHomeRuns) {
+<span class="nc" id="L41">    super(athletesName, height, weight);</span>
+<span class="nc" id="L42">    this.team = team;</span>
+<span class="nc" id="L43">    this.averageBatting = averageBatting;</span>
+<span class="nc" id="L44">    this.seasonHomeRuns = seasonHomeRuns;</span>
+<span class="nc" id="L45">  }</span>
+
+  /**
+   * @return team name
+   */
+  public String getTeam() {
+<span class="nc" id="L51">    return team;</span>
+  }
+
+
+  /**
+   * @return athlete's batting average
+   */
+  public Double getAverageBatting() {
+<span class="nc" id="L59">    return averageBatting;</span>
+  }
+
+  /**
+   * @return number of home runs in the season by the athlete
+   */
+  public Integer getSeasonHomeRuns() {
+<span class="nc" id="L66">    return seasonHomeRuns;</span>
+  }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

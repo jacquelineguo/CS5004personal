@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Painting.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment3</a> &gt; <a href="index.source.html" class="el_package">Problem1</a> &gt; <span class="el_source">Painting.java</span></div><h1>Painting.java</h1><pre class="source lang-java linenums">package Problem1;
+
+/**
+ * Represent Painting services class.
+ */
+public class Painting extends AbstractInterior{
+<span class="fc" id="L7">  private static final Integer TIME_LOWER = 16;</span>
+<span class="fc" id="L8">  private static final Integer TIME_UPPER = 24;</span>
+
+  /**
+   * Constructor for Painting class.
+   * @param invoiceID - invoice ID of the service.
+   * @param address - service address.
+   * @param size - property size which could be small, medium, or large.
+   * @param monthly - is a monthly service.
+   * @param previousService - the previous service the property got.
+   * @param numOfPets - number of pets in the property.
+   */
+  public Painting(String invoiceID, String address, PropertySize size, boolean monthly,
+      Integer previousService, Integer numOfPets) {
+<span class="fc" id="L21">    super(invoiceID, address, size, monthly, previousService, numOfPets);</span>
+<span class="fc" id="L22">  }</span>
+
+  /**
+   * Calculates the painting service price.
+   * @return the painting service price.
+   * @throws IllegalStateException if the property size is invalid.
+   */
+  public double calculatePrice() throws IllegalStateException{
+    double price;
+<span class="fc bfc" id="L31" title="All 3 branches covered.">    switch(getPropertySize()) {</span>
+      case SMALL:
+      case MEDIUM:
+<span class="fc" id="L34">        price = PRICE_PER_HR * TIME_LOWER;</span>
+<span class="fc" id="L35">        break;</span>
+      case LARGE:
+<span class="fc" id="L37">        price = PRICE_PER_HR * TIME_UPPER;</span>
+<span class="fc" id="L38">        break;</span>
+      default:
+<span class="fc" id="L40">        throw new IllegalStateException(&quot;Invalid property size: &quot; + getPropertySize());</span>
+    }
+<span class="fc" id="L42">    return giveDiscount(petCost(price));</span>
+  }
+
+  @Override
+  public String toString() {
+<span class="fc" id="L47">    return &quot;Painting: &quot; + super.toString();</span>
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+<span class="fc" id="L52">    return super.equals(obj);</span>
+  }
+
+  @Override
+  public int hashCode() {
+<span class="fc" id="L57">    return super.hashCode();</span>
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

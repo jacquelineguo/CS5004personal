@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Row.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment10</a> &gt; <a href="index.source.html" class="el_package">Model</a> &gt; <span class="el_source">Row.java</span></div><h1>Row.java</h1><pre class="source lang-java linenums">package Model;
+
+import java.util.ArrayList;
+import java.util.Objects;
+
+/**
+ * Row class represents the row in the theater.
+ */
+public class Row extends ArrayList&lt;Seat&gt; {
+  private Integer rowNum;
+  private Boolean wheelchair;
+  private Integer numOfSeats;
+<span class="fc" id="L13">  private static final Integer DEFAULT_SEATS_PER_ROW = 10;</span>
+<span class="fc" id="L14">  private static final Integer MAX_SEATS_PER_ROW = 26;</span>
+<span class="fc" id="L15">  private static final Integer MIN_SEATS_PER_ROW = 10;</span>
+<span class="fc" id="L16">  private static final Integer ROW_MAX = 15;</span>
+<span class="fc" id="L17">  public static final Integer ONE = 1;</span>
+
+  /**
+   * Constructor for Row class when we only get a row number.
+   * @param rowNum - row number, e.g. row number of the first row should be 1.
+   * @throws IllegalArgumentException if the row number is invalid.
+   */
+<span class="fc" id="L24">  public Row(Integer rowNum) throws IllegalArgumentException{</span>
+<span class="fc" id="L25">    this.checkRowNum(rowNum);</span>
+<span class="fc" id="L26">    this.rowNum = rowNum;</span>
+<span class="fc" id="L27">    this.wheelchair = false;</span>
+<span class="fc" id="L28">    this.numOfSeats = DEFAULT_SEATS_PER_ROW;</span>
+<span class="fc" id="L29">    this.addSeats(this.numOfSeats);</span>
+<span class="fc" id="L30">  }</span>
+
+  /**
+   * Constructor for Row class when we have all three fields as passed in value.
+   * @param rowNum - row number, e.g. row number of the first row should be 1.
+   * @param wheelchair - if the row should be set as wheelchair row.
+   * @param numOfSeats - number of seat in a row.
+   * @throws IllegalArgumentException if the row number and number of seats invalid.
+   */
+  public Row(Integer rowNum, Boolean wheelchair, Integer numOfSeats)
+<span class="fc" id="L40">      throws IllegalArgumentException {</span>
+<span class="fc" id="L41">    this.checkRowNum(rowNum);</span>
+<span class="fc" id="L42">    this.wheelchair = wheelchair;</span>
+<span class="fc" id="L43">    this.checkSeatsNum(numOfSeats);</span>
+<span class="fc" id="L44">    this.numOfSeats = numOfSeats;</span>
+<span class="fc" id="L45">    this.addSeats(numOfSeats);</span>
+<span class="fc" id="L46">  }</span>
+
+  /**
+   * Helper method which helps add seats to the row.
+   * @param numOfSeats - number of seat in a row.
+   */
+  private void addSeats(Integer numOfSeats) {
+<span class="fc bfc" id="L53" title="All 2 branches covered.">    for (int i = 0; i &lt; numOfSeats; i++) {</span>
+<span class="fc" id="L54">      this.add(new Seat(Character.toString((char) ('A' + i))));</span>
+    }
+<span class="fc" id="L56">  }</span>
+
+  /**
+   * Helper method which helps check if row number is valid.
+   * @param rowNum - row number, e.g. row number of the first row should be 1.
+   * @return true if valid.
+   * @throws IllegalArgumentException if row number is invalid.
+   */
+  private Boolean checkRowNum(Integer rowNum) throws IllegalArgumentException{
+<span class="fc bfc" id="L65" title="All 4 branches covered.">    if (rowNum &lt; ONE || rowNum &gt; ROW_MAX) {</span>
+<span class="fc" id="L66">      throw new IllegalArgumentException(&quot;Row No. should be between &quot; + ONE +</span>
+          &quot; and &quot; + ROW_MAX + &quot;!&quot;);
+    }
+<span class="fc" id="L69">    return true;</span>
+  }
+
+  /**
+   * Helper method which helps check number of seats is valid.
+   * @param numOfSeats - number of seat in a row.
+   * @return true if the number of seats in each is valid.
+   * @throws IllegalArgumentException if the number of seats in each is invalid.
+   */
+  private Boolean checkSeatsNum(Integer numOfSeats) throws IllegalArgumentException{
+<span class="fc bfc" id="L79" title="All 4 branches covered.">    if (numOfSeats &lt; MIN_SEATS_PER_ROW || numOfSeats &gt; MAX_SEATS_PER_ROW) {</span>
+<span class="fc" id="L80">      throw new IllegalArgumentException(&quot;Number of seats must be between &quot; +</span>
+          MIN_SEATS_PER_ROW + &quot; and &quot; + MAX_SEATS_PER_ROW + &quot;!&quot;);
+    }
+<span class="fc" id="L83">    return true;</span>
+  }
+
+  /**
+   * Set as wheelchair seat.
+   */
+  public void setWheelchair() {
+<span class="fc" id="L90">    this.wheelchair = true;</span>
+<span class="fc" id="L91">  }</span>
+
+  /**
+   * Get row number.
+   * @return row number.
+   */
+  public Integer getRowNum() {
+<span class="fc" id="L98">    return this.rowNum;</span>
+  }
+
+  /**
+   * Get if the row is wheelchair row.
+   * @return true if it is, false otherwise.
+   */
+  public Boolean getWheelchair() {
+<span class="fc" id="L106">    return this.wheelchair;</span>
+  }
+
+  /**
+   * Get number of seats in each row.
+   * @return the number of seats in each row.
+   */
+  public Integer getNumOfSeats() {
+<span class="fc" id="L114">    return this.numOfSeats;</span>
+  }
+
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L119" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L120">      return true;</span>
+    }
+<span class="pc bpc" id="L122" title="1 of 4 branches missed.">    if (o == null || this.getClass() != o.getClass()) {</span>
+<span class="fc" id="L123">      return false;</span>
+    }
+<span class="fc bfc" id="L125" title="All 2 branches covered.">    if (!super.equals(o)) {</span>
+<span class="fc" id="L126">      return false;</span>
+    }
+<span class="fc" id="L128">    Row seats = (Row) o;</span>
+<span class="fc bfc" id="L129" title="All 2 branches covered.">    return Objects.equals(getRowNum(), seats.getRowNum()) &amp;&amp; Objects</span>
+<span class="pc bpc" id="L130" title="1 of 2 branches missed.">        .equals(getWheelchair(), seats.getWheelchair()) &amp;&amp; Objects</span>
+<span class="pc bnc" id="L131" title="All 2 branches missed.">        .equals(getNumOfSeats(), seats.getNumOfSeats());</span>
+  }
+
+  @Override
+  public int hashCode() {
+<span class="fc" id="L136">    return Objects.hash(super.hashCode(), getRowNum(), getWheelchair(), getNumOfSeats());</span>
+  }
+
+  @Override
+  public String toString() {
+<span class="fc" id="L141">    return &quot;Row{&quot; +</span>
+        &quot;rowNum=&quot; + rowNum +
+        &quot;, wheelchair=&quot; + wheelchair +
+        &quot;, numOfSeats=&quot; + numOfSeats +
+        '}';
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

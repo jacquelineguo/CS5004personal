@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Seat.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment10</a> &gt; <a href="index.source.html" class="el_package">Model</a> &gt; <span class="el_source">Seat.java</span></div><h1>Seat.java</h1><pre class="source lang-java linenums">package Model;
+
+import java.util.Objects;
+
+/**
+ * Seat class represents the seat in the theater.
+ */
+public class Seat {
+  private String seatName;
+  private String customerName;
+
+  /**
+   * Constructor for Seat class.
+   * @param seatName - seat name which could be 'A', 'B', 'C', 'D', ...
+   */
+<span class="fc" id="L16">  public Seat(String seatName) {</span>
+<span class="fc" id="L17">    this.seatName = seatName;</span>
+<span class="fc" id="L18">    this.customerName = null;</span>
+<span class="fc" id="L19">  }</span>
+
+  /**
+   * Constructor for Seat class.
+   * @param seatName - seat name which could be 'A', 'B', 'C', 'D', ...
+   * @param customerName - customer name if the customer reserved the seats.
+   */
+<span class="fc" id="L26">  public Seat(String seatName, String customerName) {</span>
+<span class="fc" id="L27">    this.seatName = seatName;</span>
+<span class="fc" id="L28">    this.customerName = customerName;</span>
+<span class="fc" id="L29">  }</span>
+
+  /**
+   * Get the seat name.
+   * @return the seat name.
+   */
+  public String getSeatName() {
+<span class="fc" id="L36">    return this.seatName;</span>
+  }
+
+  /**
+   * Get the customer name.
+   * @return the customer name.
+   */
+  public String getCustomerName() {
+<span class="fc" id="L44">    return this.customerName;</span>
+  }
+
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L49" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L50">      return true;</span>
+    }
+<span class="pc bpc" id="L52" title="1 of 4 branches missed.">    if (o == null || this.getClass() != o.getClass()) {</span>
+<span class="fc" id="L53">      return false;</span>
+    }
+<span class="fc" id="L55">    Seat seat = (Seat) o;</span>
+<span class="fc bfc" id="L56" title="All 2 branches covered.">    return Objects.equals(getSeatName(), seat.getSeatName()) &amp;&amp; Objects</span>
+<span class="pc bpc" id="L57" title="1 of 2 branches missed.">        .equals(getCustomerName(), seat.getCustomerName());</span>
+  }
+
+  @Override
+  public int hashCode() {
+<span class="fc" id="L62">    return Objects.hash(getSeatName(), getCustomerName());</span>
+  }
+
+  @Override
+  public String toString() {
+<span class="fc" id="L67">    return &quot;Seat{&quot; +</span>
+        &quot;seatName='&quot; + seatName + '\'' +
+        &quot;, customerName='&quot; + customerName + '\'' +
+        '}';
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

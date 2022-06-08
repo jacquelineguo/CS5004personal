@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CommandLineParser.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">HW9</a> &gt; <a href="index.source.html" class="el_package">Controller</a> &gt; <span class="el_source">CommandLineParser.java</span></div><h1>CommandLineParser.java</h1><pre class="source lang-java linenums">package Controller;
+
+import static Controller.Commands.INDEX_TWO;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Objects;
+
+/**
+ * Processes and validates command line arguments.
+ * This class doesn't *do* anything with the values provided by the user beyond initial validation.
+ * It is another class' responsibility to determine what to do with the user input.
+ */
+public class CommandLineParser {
+
+  private HashSet&lt;String&gt; commands;
+  private HashMap&lt;String, String&gt; parameters;
+
+  /**
+   * Constructor for the CommandLineParser class
+   *
+   * @param args The arguments provided by the user.
+   * @throws InvalidArgumentsException If the arguments supplied are invalid.
+   */
+<span class="fc" id="L24">  public CommandLineParser(String[] args) throws InvalidArgumentsException {</span>
+<span class="fc" id="L25">    commands = new HashSet&lt;&gt;();</span>
+<span class="fc" id="L26">    parameters = new HashMap&lt;&gt;();</span>
+
+<span class="fc" id="L28">    this.processArgs(args);</span>
+<span class="fc" id="L29">    this.validate();</span>
+<span class="fc" id="L30">  }</span>
+
+  /**
+   * Gets commands and to return a hash set in string.
+   *
+   * @return the commands
+   */
+  public HashSet&lt;String&gt; getCommands() {
+<span class="fc" id="L38">    return this.commands;</span>
+  }
+
+  /**
+   * Gets parameters and to return a hash map in strings.
+   *
+   * @return the parameters.
+   */
+  public HashMap&lt;String, String&gt; getParameters() {
+<span class="fc" id="L47">    return this.parameters;</span>
+  }
+
+  /**
+   * To check if the command arguments are valid of not.
+   *
+   * @throws InvalidArgumentsException
+   */
+  private void validate() throws InvalidArgumentsException {
+
+<span class="pc bpc" id="L57" title="1 of 2 branches missed.">    if (!this.parameters.containsKey(Commands.CSV_FILE)) {</span>
+<span class="nc" id="L58">      throw new InvalidArgumentsException(&quot;Argument doesn't contain csv file&quot;);</span>
+    }
+
+<span class="fc bfc" id="L61" title="All 2 branches covered.">    if (this.commands.contains(Commands.ADD_TODO)) {</span>
+<span class="fc" id="L62">      boolean foundTodoText = this.parameters.containsKey(Commands.TODO_TEXT.substring(INDEX_TWO));</span>
+<span class="pc bpc" id="L63" title="1 of 2 branches missed.">      if (!foundTodoText) {</span>
+<span class="nc" id="L64">        throw new InvalidArgumentsException(&quot;Argument doesn't contain --todo-text&quot;);</span>
+      }
+    }
+
+<span class="fc bfc" id="L68" title="All 2 branches covered.">    if (this.ContainsAddToDo()) {</span>
+<span class="fc" id="L69">      boolean foundAddTodo = this.commands.contains(Commands.ADD_TODO);</span>
+
+<span class="pc bpc" id="L71" title="1 of 2 branches missed.">      if (!foundAddTodo) {</span>
+<span class="nc" id="L72">        throw new InvalidArgumentsException(&quot;Argument doesn't contain --add-todo option&quot;);</span>
+      }
+    }
+
+<span class="fc bfc" id="L76" title="All 2 branches covered.">    if (this.ContainsDisplay()) {</span>
+<span class="fc" id="L77">      boolean foundDisplay = this.commands.contains(Commands.DISPLAY);</span>
+<span class="pc bpc" id="L78" title="1 of 2 branches missed.">      if (!foundDisplay) {</span>
+<span class="nc" id="L79">        throw new InvalidArgumentsException(&quot;Argument doesn't contain --display option&quot;);</span>
+      }
+    }
+<span class="fc" id="L82">  }</span>
+
+  /**
+   * To store the user entered arguments in a hash set and a hash map.
+   *
+   * @param args The args supplied by the user.
+   * @throws InvalidArgumentsException If an invalid argument is provided at the command line.
+   */
+  public void processArgs(String[] args) throws InvalidArgumentsException {
+
+<span class="fc bfc" id="L92" title="All 2 branches covered.">    for (int i = 0; i &lt; args.length; i++) {</span>
+      try {
+<span class="fc bfc" id="L94" title="All 6 branches covered.">        switch (args[i]) {</span>
+          case Commands.CSV_FILE:
+<span class="fc" id="L96">            String lastFourDigits = args[i + 1].substring(args[i + 1].length() - 4);</span>
+<span class="pc bpc" id="L97" title="2 of 4 branches missed.">            if (args[i + 1].contains(&quot;--&quot;) || !lastFourDigits.equals(&quot;.csv&quot;)) {</span>
+<span class="nc" id="L98">              throw new InvalidArgumentsException(</span>
+                      &quot;Arg &quot; + args[i] + &quot; doesn't follow a valid value.&quot;);
+            } else
+<span class="fc" id="L101">              this.parameters.put(Commands.CSV_FILE, args[++i]);</span>
+<span class="fc" id="L102">              break;</span>
+
+          case Commands.COMPLETED:
+          case Commands.ADD_TODO:
+          case Commands.DISPLAY:
+          case Commands.SHOW_INCOMPLETE:
+<span class="fc" id="L108">            this.commands.add(args[i]);</span>
+<span class="fc" id="L109">            break;</span>
+
+          case Commands.TODO_TEXT:
+          case Commands.DUE:
+          case Commands.COMPLETE_TODO:
+          case Commands.CATEGORY:
+          case Commands.SHOW_CATEGORY:
+          case Commands.PRIORITY:
+<span class="fc" id="L117">            this.ifParameterValid(args[i+1]);</span>
+<span class="fc" id="L118">            this.parameters.put(args[i].substring(INDEX_TWO), args[++i]);</span>
+<span class="fc" id="L119">            break;</span>
+
+          case Commands.SORT_BY_DATE:
+<span class="pc bpc" id="L122" title="1 of 2 branches missed.">            if (this.commands.contains(Commands.SORT_BY_PRIORITY)) {</span>
+<span class="nc" id="L123">              throw new InvalidArgumentsException(</span>
+                      &quot;Arg &quot; + args[i] + &quot; Cannot be combined with --sort-by-priority.&quot;);
+            } else
+<span class="fc" id="L126">              this.commands.add(args[i]);</span>
+<span class="fc" id="L127">              break;</span>
+
+          case Commands.SORT_BY_PRIORITY:
+<span class="pc bpc" id="L130" title="1 of 2 branches missed.">            if (this.commands.contains(Commands.SORT_BY_PRIORITY)) {</span>
+<span class="nc" id="L131">              throw new InvalidArgumentsException(</span>
+                      &quot;Arg &quot; + args[i] + &quot; Cannot be combined with --sort-by-date.&quot;);
+            } else
+<span class="fc" id="L134">              this.commands.add(args[i]);</span>
+<span class="fc" id="L135">              break;</span>
+
+          default:
+<span class="fc" id="L138">            throw new InvalidArgumentsException(&quot;Unknown argument: &quot; + args[i]);</span>
+        }
+
+<span class="nc" id="L141">      } catch (IndexOutOfBoundsException e) {</span>
+<span class="nc" id="L142">        throw new InvalidArgumentsException(&quot;Arg &quot; + args[i] + &quot; doesn't follow a valid value.&quot;);</span>
+<span class="fc" id="L143">      }</span>
+    }
+<span class="fc" id="L145">  }</span>
+
+  /**
+   * ifParameterValid to check if user input arguments are valid or not.
+   * @return none
+   */
+  private static void ifParameterValid(String k) throws InvalidArgumentsException {
+<span class="pc bpc" id="L152" title="1 of 2 branches missed.">    if (k.contains(&quot;--&quot;)) {</span>
+<span class="nc" id="L153">      throw new InvalidArgumentsException(</span>
+              &quot;Arg &quot; + k + &quot; doesn't follow a valid value.&quot;);
+    }
+<span class="fc" id="L156">  }</span>
+
+  /**
+   * ContainsDisplay to check if arguments are followed by add to do option.
+   * @return boolean
+   */
+  private boolean ContainsAddToDo() {
+<span class="fc bfc" id="L163" title="All 2 branches covered.">    return(this.parameters.containsKey(Commands.DUE.substring(INDEX_TWO)) ||</span>
+<span class="pc bpc" id="L164" title="1 of 2 branches missed.">        this.commands.contains(Commands.COMPLETED) ||</span>
+<span class="pc bpc" id="L165" title="1 of 2 branches missed.">        this.parameters.containsKey(Commands.PRIORITY.substring(INDEX_TWO)) ||</span>
+<span class="pc bpc" id="L166" title="1 of 2 branches missed.">        this.parameters.containsKey(Commands.CATEGORY.substring(INDEX_TWO)) ||</span>
+<span class="pc bpc" id="L167" title="1 of 2 branches missed.">        this.parameters.containsKey(Commands.COMPLETE_TODO));</span>
+  }
+
+  /**
+   * ContainsDisplay to check if arguments are followed by display option.
+   * @return boolean
+   */
+  private boolean ContainsDisplay() {
+<span class="pc bpc" id="L175" title="1 of 2 branches missed.">    return (this.parameters.containsKey(Commands.SHOW_CATEGORY) ||</span>
+<span class="fc bfc" id="L176" title="All 2 branches covered.">        this.commands.contains(Commands.SHOW_INCOMPLETE) ||</span>
+<span class="fc bfc" id="L177" title="All 2 branches covered.">        this.commands.contains(Commands.SORT_BY_DATE) ||</span>
+<span class="fc bfc" id="L178" title="All 2 branches covered.">        this.commands.contains(Commands.SORT_BY_PRIORITY));</span>
+  }
+
+  /**
+   * Equals to check if two object are same object
+   *
+   * @param o the object pass in to compare
+   * @return boolean true or false
+   */
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L189" title="All 2 branches covered.">    if (this == o)</span>
+<span class="fc" id="L190">      return true;</span>
+<span class="pc bpc" id="L191" title="2 of 4 branches missed.">    if (o == null || getClass() != o.getClass())</span>
+<span class="nc" id="L192">      return false;</span>
+<span class="fc" id="L193">    CommandLineParser that = (CommandLineParser) o;</span>
+<span class="fc bfc" id="L194" title="All 2 branches covered.">    return Objects.equals(this.commands, that.commands) &amp;&amp;</span>
+<span class="pc bpc" id="L195" title="1 of 2 branches missed.">        Objects.equals(this.parameters, that.parameters);</span>
+  }
+
+  /**
+   * hashCode generated by a hashing algorithm
+   *
+   * @return an integer value
+   */
+  @Override
+  public int hashCode() {
+<span class="fc" id="L205">    return Objects.hash(this.commands, this.parameters);</span>
+  }
+
+  /**
+   * toString() represent object as a string
+   *
+   * @return a string that represent the commands and parameters
+   */
+  @Override
+  public String toString() {
+<span class="fc" id="L215">    return &quot;CommandLineParser{&quot; +</span>
+        &quot;commands=&quot; + this.commands +
+        &quot;, parameters=&quot; + this.parameters +
+        '}';
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

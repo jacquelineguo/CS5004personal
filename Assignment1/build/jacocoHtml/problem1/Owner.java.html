@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Owner.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment1</a> &gt; <a href="index.source.html" class="el_package">problem1</a> &gt; <span class="el_source">Owner.java</span></div><h1>Owner.java</h1><pre class="source lang-java linenums">package problem1;
+/**
+ * Owner is a class represents an vehicle owner that has a unique firstName, lastName, and phoneNumber.
+ */
+public class Owner {
+    private String firstName;
+    private String lastName;
+    private String phoneNumber;
+
+    /**
+     * Constructor that creates a new owner object with the specified firstName, lastName, and phoneNumber.
+     * @param firstName - first name of a vehicle owner.
+     * @param lastName - last name of a vehicle owner.
+     * @param phoneNumber - phone number of a vehicle owner.
+     */
+
+<span class="fc" id="L17">    public Owner(String firstName, String lastName, String phoneNumber) {</span>
+<span class="fc" id="L18">        this.firstName = firstName;</span>
+<span class="fc" id="L19">        this.lastName = lastName;</span>
+<span class="fc" id="L20">        this.phoneNumber = phoneNumber;</span>
+<span class="fc" id="L21">    }</span>
+
+    /**
+     * Returns the firstName of the Owner.
+     * * @return the firstName of the Owner.
+     */
+
+    public String getFirstName() {
+<span class="fc" id="L29">        return this.firstName;</span>
+    }
+
+    /**
+     * Returns the lastName of the Owner.
+     * * @return the lastName of the Owner.
+     */
+
+    public String getLastName() {
+<span class="fc" id="L38">        return this.lastName;</span>
+    }
+
+    /**
+     * Returns the phoneNumber of the Owner.
+     * * @return the phoneNumber of the Owner.
+     */
+
+    public String getPhoneNumber() {
+<span class="fc" id="L47">        return this.phoneNumber;</span>
+    }
+
+    /**
+     * Sets the firstName of the Vehicle.
+     */
+
+    public void setFirstName(String firstName) {
+<span class="fc" id="L55">        this.firstName = firstName;</span>
+<span class="fc" id="L56">    }</span>
+
+    /**
+     * Sets the lastName of the Vehicle.
+     */
+
+    public void setLastName(String lastName) {
+<span class="fc" id="L63">        this.lastName = lastName;</span>
+<span class="fc" id="L64">    }</span>
+
+    /**
+     * Sets the phoneNumber of the Vehicle.
+     */
+
+    public void setPhoneNumber(String phoneNumber) {
+<span class="fc bfc" id="L71" title="All 2 branches covered.">        if (phoneNumber.length() == 10) {</span>
+<span class="fc" id="L72">            this.phoneNumber = phoneNumber;</span>
+        }
+        else {
+<span class="fc" id="L75">            System.out.println(&quot;Wrong phone number entered!&quot;);</span>
+<span class="fc" id="L76">            this.phoneNumber = &quot;0000000000&quot;;</span>
+        }
+<span class="fc" id="L78">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

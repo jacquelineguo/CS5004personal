@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AbstractInterior.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment3</a> &gt; <a href="index.source.html" class="el_package">Problem1</a> &gt; <span class="el_source">AbstractInterior.java</span></div><h1>AbstractInterior.java</h1><pre class="source lang-java linenums">package Problem1;
+
+import java.util.Objects;
+
+/**
+ * Represent all interior services.
+ */
+public abstract class AbstractInterior extends AbstractServices{
+  private Integer numOfPets;
+  private static final double PET_BOUND = 3;
+  private static final double NO_PET = 0;
+
+  /**
+   * Constructor for AbstractInterior class
+   * @param invoiceID - invoice ID of the service.
+   * @param address - service address.
+   * @param size - property size which could be small, medium, or large.
+   * @param monthly - is a monthly service.
+   * @param previousService - the previous service the property got.
+   * @param numOfPets - number of pets in the property.
+   * @throws IllegalArgumentException if the pet number is smaller than 0.
+   */
+  public AbstractInterior(String invoiceID, String address, PropertySize size, boolean monthly,
+      Integer previousService, Integer numOfPets) throws IllegalArgumentException{
+<span class="fc" id="L25">    super(invoiceID, address, size, monthly, previousService);</span>
+
+<span class="fc bfc" id="L27" title="All 2 branches covered.">    if (isNegative(numOfPets)) {</span>
+<span class="fc" id="L28">      throw new IllegalArgumentException(&quot;The pet number must be larger than or equal to 0.&quot;);</span>
+    }
+    else {
+<span class="fc" id="L31">      this.numOfPets = numOfPets;</span>
+    }
+<span class="fc" id="L33">  }</span>
+
+  /**
+   * Calculates the pet cost.
+   * @param price - service price.
+   * @return the total price includes pet cost.
+   */
+  protected double petCost(double price) {
+<span class="fc" id="L41">    double percent = 0.0;</span>
+<span class="fc bfc" id="L42" title="All 2 branches covered.">    if (this.numOfPets &gt;= PET_BOUND) {</span>
+<span class="fc" id="L43">      percent = 0.07;</span>
+    }
+<span class="fc bfc" id="L45" title="All 2 branches covered.">    else if (this.numOfPets &gt; NO_PET){</span>
+<span class="fc" id="L46">      percent = 0.05;</span>
+    }
+<span class="fc" id="L48">    return price + price * percent;</span>
+  }
+
+  /**
+   * Calculates interior service price.
+   * @return interior service price.
+   * @throws IllegalStateException if the property is invalid.
+   */
+
+  @Override
+  public double calculatePrice() {
+<span class="fc" id="L59">    return super.calculatePrice();</span>
+  }
+
+  @Override
+  public String toString() {
+<span class="fc" id="L64">    return super.toString() + &quot; pets=&quot; + this.numOfPets;</span>
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+<span class="fc bfc" id="L69" title="All 2 branches covered.">    if (this == obj) {</span>
+<span class="fc" id="L70">      return true;</span>
+    }
+<span class="pc bpc" id="L72" title="2 of 4 branches missed.">    if (obj == null || getClass() != obj.getClass()) {</span>
+<span class="nc" id="L73">      return false;</span>
+    }
+<span class="fc bfc" id="L75" title="All 2 branches covered.">    if (!super.equals(obj)) {</span>
+<span class="fc" id="L76">      return false;</span>
+    }
+<span class="fc" id="L78">    AbstractInterior that = (AbstractInterior) obj;</span>
+<span class="fc" id="L79">    return this.numOfPets.equals(that.numOfPets);</span>
+  }
+
+  @Override
+  public int hashCode() {
+<span class="fc" id="L84">    return Objects.hash(super.hashCode(), this.numOfPets);</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

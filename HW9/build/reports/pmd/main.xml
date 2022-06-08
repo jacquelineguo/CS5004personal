@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.26.0" timestamp="2021-04-23T05:44:57.418">
+<file name="/Users/jacquelineguo/Documents/Northeastern University/Spring 2021/CS 5004/Group_Xuan_Guo_Ruiqi_Yang_Zidi_Xia/HW9/src/main/java/Controller/CSVReader.java">
+<violation beginline="58" endline="58" begincolumn="7" endcolumn="24" rule="SystemPrintln" ruleset="Best Practices" package="Controller" class="CSVReader" method="readCSV" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_bestpractices.html#systemprintln" priority="2">
+System.out.println is used
+</violation>
+<violation beginline="61" endline="61" begincolumn="7" endcolumn="24" rule="SystemPrintln" ruleset="Best Practices" package="Controller" class="CSVReader" method="readCSV" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_bestpractices.html#systemprintln" priority="2">
+System.out.println is used
+</violation>
+</file>
+<file name="/Users/jacquelineguo/Documents/Northeastern University/Spring 2021/CS 5004/Group_Xuan_Guo_Ruiqi_Yang_Zidi_Xia/HW9/src/main/java/Controller/CommandLineParser.java">
+<violation beginline="28" endline="28" begincolumn="5" endcolumn="26" rule="ConstructorCallsOverridableMethod" ruleset="Error Prone" package="Controller" class="CommandLineParser" method="CommandLineParser" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#constructorcallsoverridablemethod" priority="1">
+Overridable method 'processArgs' called during object construction
+</violation>
+<violation beginline="162" endline="168" begincolumn="11" endcolumn="3" rule="MethodNamingConventions" ruleset="Code Style" package="Controller" class="CommandLineParser" method="ContainsAddToDo" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_codestyle.html#methodnamingconventions" priority="1">
+The instance method name 'ContainsAddToDo' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="174" endline="179" begincolumn="11" endcolumn="3" rule="MethodNamingConventions" ruleset="Code Style" package="Controller" class="CommandLineParser" method="ContainsDisplay" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_codestyle.html#methodnamingconventions" priority="1">
+The instance method name 'ContainsDisplay' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+</file>
+<file name="/Users/jacquelineguo/Documents/Northeastern University/Spring 2021/CS 5004/Group_Xuan_Guo_Ruiqi_Yang_Zidi_Xia/HW9/src/main/java/Controller/Commands.java">
+<violation beginline="7" endline="23" begincolumn="8" endcolumn="5" rule="ClassNamingConventions" ruleset="Code Style" package="Controller" class="Commands" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_codestyle.html#classnamingconventions" priority="1">
+The utility class name 'Commands' doesn't match '[A-Z][a-zA-Z0-9]+(Utils?|Helper|Constants)'
+</violation>
+</file>
+<file name="/Users/jacquelineguo/Documents/Northeastern University/Spring 2021/CS 5004/Group_Xuan_Guo_Ruiqi_Yang_Zidi_Xia/HW9/src/main/java/Controller/ToDoApplicationHandler.java">
+<violation beginline="120" endline="120" begincolumn="18" endcolumn="28" rule="VariableNamingConventions" ruleset="Code Style" package="Controller" class="ToDoApplicationHandler" method="getAddParameters" variable="ADD_ACTIONS" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_codestyle.html#variablenamingconventions" priority="1">
+Only variables that are final should contain underscores (except for underscores in standard prefix/suffix), 'ADD_ACTIONS' is not final.
+</violation>
+<violation beginline="120" endline="120" begincolumn="18" endcolumn="28" rule="LocalVariableNamingConventions" ruleset="Code Style" package="Controller" class="ToDoApplicationHandler" method="getAddParameters" variable="ADD_ACTIONS" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_codestyle.html#localvariablenamingconventions" priority="1">
+The local variable name 'ADD_ACTIONS' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="120" endline="120" begincolumn="18" endcolumn="28" rule="VariableNamingConventions" ruleset="Code Style" package="Controller" class="ToDoApplicationHandler" method="getAddParameters" variable="ADD_ACTIONS" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_codestyle.html#variablenamingconventions" priority="1">
+Variables should start with a lowercase character, 'ADD_ACTIONS' starts with uppercase character.
+</violation>
+<violation beginline="141" endline="141" begincolumn="18" endcolumn="25" rule="LocalVariableNamingConventions" ruleset="Code Style" package="Controller" class="ToDoApplicationHandler" method="findSort" variable="KEY_WORD" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_codestyle.html#localvariablenamingconventions" priority="1">
+The final local variable name 'KEY_WORD' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="195" endline="195" begincolumn="7" endcolumn="24" rule="SystemPrintln" ruleset="Best Practices" package="Controller" class="ToDoApplicationHandler" method="displayList" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_bestpractices.html#systemprintln" priority="2">
+System.out.println is used
+</violation>
+</file>
+<file name="/Users/jacquelineguo/Documents/Northeastern University/Spring 2021/CS 5004/Group_Xuan_Guo_Ruiqi_Yang_Zidi_Xia/HW9/src/main/java/Controller/UpdateCSV.java">
+<violation beginline="34" endline="34" begincolumn="7" endcolumn="24" rule="SystemPrintln" ruleset="Best Practices" package="Controller" class="UpdateCSV" method="deleteFile" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_bestpractices.html#systemprintln" priority="2">
+System.out.println is used
+</violation>
+<violation beginline="37" endline="37" begincolumn="5" endcolumn="22" rule="SystemPrintln" ruleset="Best Practices" package="Controller" class="UpdateCSV" method="deleteFile" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_bestpractices.html#systemprintln" priority="2">
+System.out.println is used
+</violation>
+<violation beginline="61" endline="61" begincolumn="7" endcolumn="24" rule="SystemPrintln" ruleset="Best Practices" package="Controller" class="UpdateCSV" method="update" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_bestpractices.html#systemprintln" priority="2">
+System.out.println is used
+</violation>
+<violation beginline="64" endline="64" begincolumn="7" endcolumn="24" rule="SystemPrintln" ruleset="Best Practices" package="Controller" class="UpdateCSV" method="update" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_bestpractices.html#systemprintln" priority="2">
+System.out.println is used
+</violation>
+</file>
+<file name="/Users/jacquelineguo/Documents/Northeastern University/Spring 2021/CS 5004/Group_Xuan_Guo_Ruiqi_Yang_Zidi_Xia/HW9/src/main/java/Model/ToDo.java">
+<violation beginline="156" endline="156" begincolumn="7" endcolumn="27" rule="ConstructorCallsOverridableMethod" ruleset="Error Prone" package="Model" class="ToDo$Builder" method="Builder" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#constructorcallsoverridablemethod" priority="1">
+Overridable method 'completed' called during object construction
+</violation>
+<violation beginline="157" endline="157" begincolumn="7" endcolumn="21" rule="ConstructorCallsOverridableMethod" ruleset="Error Prone" package="Model" class="ToDo$Builder" method="Builder" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#constructorcallsoverridablemethod" priority="1">
+Overridable method 'due' called during object construction
+</violation>
+<violation beginline="158" endline="158" begincolumn="7" endcolumn="26" rule="ConstructorCallsOverridableMethod" ruleset="Error Prone" package="Model" class="ToDo$Builder" method="Builder" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#constructorcallsoverridablemethod" priority="1">
+Overridable method 'priority' called during object construction
+</violation>
+<violation beginline="159" endline="159" begincolumn="7" endcolumn="26" rule="ConstructorCallsOverridableMethod" ruleset="Error Prone" package="Model" class="ToDo$Builder" method="Builder" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#constructorcallsoverridablemethod" priority="1">
+Overridable method 'category' called during object construction
+</violation>
+<violation beginline="160" endline="160" begincolumn="7" endcolumn="13" rule="ConstructorCallsOverridableMethod" ruleset="Error Prone" package="Model" class="ToDo$Builder" method="Builder" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#constructorcallsoverridablemethod" priority="1">
+Overridable method 'Build' called during object construction
+</violation>
+<violation beginline="193" endline="193" begincolumn="11" endcolumn="28" rule="SystemPrintln" ruleset="Best Practices" package="Model" class="ToDo$Builder" method="due" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_bestpractices.html#systemprintln" priority="2">
+System.err.println is used
+</violation>
+<violation beginline="198" endline="198" begincolumn="13" endcolumn="30" rule="SystemPrintln" ruleset="Best Practices" package="Model" class="ToDo$Builder" method="due" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_bestpractices.html#systemprintln" priority="2">
+System.err.println is used
+</violation>
+<violation beginline="204" endline="204" begincolumn="13" endcolumn="30" rule="SystemPrintln" ruleset="Best Practices" package="Model" class="ToDo$Builder" method="due" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_bestpractices.html#systemprintln" priority="2">
+System.err.println is used
+</violation>
+<violation beginline="218" endline="218" begincolumn="21" endcolumn="36" rule="LocalVariableNamingConventions" ruleset="Code Style" package="Model" class="ToDo$Builder" method="priority" variable="DEFAULT_PRIORITY" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_codestyle.html#localvariablenamingconventions" priority="1">
+The final local variable name 'DEFAULT_PRIORITY' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="246" endline="248" begincolumn="12" endcolumn="5" rule="MethodNamingConventions" ruleset="Code Style" package="Model" class="ToDo$Builder" method="Build" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_codestyle.html#methodnamingconventions" priority="1">
+The instance method name 'Build' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+</file>
+</pmd>

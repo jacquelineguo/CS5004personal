@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AbstractFilmArtist.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">lab4</a> &gt; <a href="index.source.html" class="el_package">Problem1</a> &gt; <span class="el_source">AbstractFilmArtist.java</span></div><h1>AbstractFilmArtist.java</h1><pre class="source lang-java linenums">package Problem1;
+
+import java.util.Arrays;
+import java.util.Objects;
+
+/**
+ * Represents AbstractFilmArtist class.
+ */
+public abstract class AbstractFilmArtist extends AbstractArtist{
+  private String[] movies;
+  private String[] series;
+  private String[] multimedia;
+
+  /**
+   * Constructor of AbstractFilmArtist class.
+   * @param name - an artist's name.
+   * @param age - the artist's age.
+   * @param genres - an Artist’sg genres.
+   * @param awards - all awards that an Artist received.
+   * @param movies - all movies that the artist worked on.
+   * @param series - all TV series that the artist worked on.
+   * @param multimedia - all other multimedia contents the artist worked on.
+   * @throws InvalidAgeException - if the age is not in range 0 to 128.
+   */
+  public AbstractFilmArtist(String name, Integer age, String[] genres, String[] awards,
+      String[] movies, String[] series, String[] multimedia)
+      throws InvalidAgeException {
+<span class="fc" id="L28">    super(name, age, genres, awards);</span>
+
+<span class="fc" id="L30">    this.movies = movies;</span>
+<span class="fc" id="L31">    this.series = series;</span>
+<span class="fc" id="L32">    this.multimedia = multimedia;</span>
+<span class="fc" id="L33">  }</span>
+
+  /**
+   * Get movies.
+   * @return all movies that the artist worked on.
+   */
+  public String[] getMovies() {
+<span class="fc" id="L40">    return this.movies;</span>
+  }
+
+  /**
+   * Get series.
+   * @return all TV series that the artist worked on.
+   */
+  public String[] getSeries() {
+<span class="fc" id="L48">    return this.series;</span>
+  }
+
+  /**
+   * Get multimedia.
+   * @return all other multimedia contents the artist worked on.
+   */
+  public String[] getMultimedia() {
+<span class="fc" id="L56">    return this.multimedia;</span>
+  }
+
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L61" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L62">      return true;</span>
+    }
+<span class="fc bfc" id="L64" title="All 2 branches covered.">    if (!(o instanceof AbstractFilmArtist)) {</span>
+<span class="fc" id="L65">      return false;</span>
+    }
+<span class="fc bfc" id="L67" title="All 2 branches covered.">    if (!super.equals(o)) {</span>
+<span class="fc" id="L68">      return false;</span>
+    }
+<span class="fc" id="L70">    AbstractFilmArtist that = (AbstractFilmArtist) o;</span>
+<span class="pc bpc" id="L71" title="1 of 2 branches missed.">    return Arrays.equals(this.movies, that.movies) &amp;&amp;</span>
+<span class="pc bpc" id="L72" title="1 of 2 branches missed.">        Arrays.equals(this.series, that.series) &amp;&amp;</span>
+<span class="pc bpc" id="L73" title="1 of 2 branches missed.">        Arrays.equals(this.multimedia, that.multimedia);</span>
+  }
+
+  @Override
+  public int hashCode() {
+<span class="fc" id="L78">    return Objects.hash(super.hashCode(), movies, series, multimedia);</span>
+  }
+
+  @Override
+  public String toString() {
+<span class="fc" id="L83">    return &quot;AbstractFilmArtist{&quot; + super.toString() +</span>
+<span class="fc" id="L84">        &quot;, movies=&quot; + Arrays.toString(movies) +</span>
+<span class="fc" id="L85">        &quot;, series=&quot; + Arrays.toString(series) +</span>
+<span class="fc" id="L86">        &quot;, multimedia=&quot; + Arrays.toString(multimedia) +</span>
+        '}';
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

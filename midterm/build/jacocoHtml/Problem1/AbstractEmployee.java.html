@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AbstractEmployee.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">midterm</a> &gt; <a href="index.source.html" class="el_package">Problem1</a> &gt; <span class="el_source">AbstractEmployee.java</span></div><h1>AbstractEmployee.java</h1><pre class="source lang-java linenums">package Problem1;
+
+import java.time.LocalDate;
+
+public abstract class AbstractEmployee implements IProductivity{
+  protected String employeeID;
+  protected ContactInfo contactInfo;
+  protected LocalDate employmentDate;
+  protected EducationLevel educationLevel;
+  protected EmploymentLevel employmentLevel;
+  protected Double lastYearEarning;
+<span class="fc" id="L12">  protected static final Double NO_BONUS = 0.0;</span>
+<span class="fc" id="L13">  private static final Double EARNING_BOUND = 125000.0;</span>
+<span class="fc" id="L14">  private static final Double EMPLOYMENT_LEVEL_BONUS = 1.3;</span>
+
+  public AbstractEmployee(String employeeID, ContactInfo contactInfo, LocalDate employmentDate,
+<span class="fc" id="L17">      EducationLevel educationLevel, EmploymentLevel employmentLevel, Double lastYearEarning) {</span>
+<span class="fc" id="L18">    this.employeeID = employeeID;</span>
+<span class="fc" id="L19">    this.contactInfo = contactInfo;</span>
+<span class="fc" id="L20">    this.employmentDate = employmentDate;</span>
+<span class="fc" id="L21">    this.educationLevel = educationLevel;</span>
+<span class="fc" id="L22">    this.employmentLevel = employmentLevel;</span>
+<span class="fc" id="L23">    this.lastYearEarning = lastYearEarning;</span>
+<span class="fc" id="L24">  }</span>
+
+  public Double estimateProductivity() {
+<span class="fc" id="L27">    return this.baseProductivity() + this.employmentLevelBonus();</span>
+  }
+
+  protected abstract Double baseProductivity();
+
+  private Double employmentLevelBonus() {
+<span class="fc bfc" id="L33" title="All 2 branches covered.">    if (this.lastYearEarning &gt; EARNING_BOUND &amp;&amp;</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        this.employmentLevel.equals(EmploymentLevel.INTERMEDIATE_LEVEL)) {</span>
+<span class="fc" id="L35">      return EMPLOYMENT_LEVEL_BONUS;</span>
+    }
+<span class="fc" id="L37">    return NO_BONUS;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

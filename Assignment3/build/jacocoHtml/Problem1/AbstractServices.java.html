@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AbstractServices.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment3</a> &gt; <a href="index.source.html" class="el_package">Problem1</a> &gt; <span class="el_source">AbstractServices.java</span></div><h1>AbstractServices.java</h1><pre class="source lang-java linenums">package Problem1;
+
+import java.util.Objects;
+
+/**
+ * Represent all services.
+ */
+public abstract class AbstractServices implements Services{
+  private String invoiceID;
+  private String address;
+  private PropertySize size;
+  private boolean monthly;
+  private Integer previousService;
+  public static final double PRICE_PER_HR = 80.0;
+<span class="fc" id="L15">  private static final Integer TENTH = 10;</span>
+<span class="fc" id="L16">  private static final Integer NINE = 9;</span>
+  private static final double MONTHLY_DIS = 0.1;
+<span class="fc" id="L18">  public static final Integer MED_HR = 2;</span>
+<span class="fc" id="L19">  public static final Integer LARGE_HR = 4;</span>
+<span class="fc" id="L20">  private static final Integer ZERO = 0;</span>
+
+  /**
+   * Constructor for AbstractServices class.
+   * @param invoiceID - invoice ID of the service.
+   * @param address - service address.
+   * @param size - property size which could be small, medium, or large.
+   * @param monthly - is a monthly service.
+   * @param previousService - the previous service the property got.
+   * @throws IllegalArgumentException - if the previous services number is negative.
+   */
+  public AbstractServices(String invoiceID, String address, PropertySize size, boolean monthly,
+<span class="fc" id="L32">      Integer previousService) throws IllegalArgumentException {</span>
+<span class="fc" id="L33">    this.invoiceID = invoiceID;</span>
+<span class="fc" id="L34">    this.address = address;</span>
+<span class="fc" id="L35">    this.size = size;</span>
+<span class="fc" id="L36">    this.monthly = monthly;</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">    if (isNegative(previousService)) {</span>
+<span class="fc" id="L38">      throw new IllegalArgumentException(&quot;Can't get a negative number of services.&quot;);</span>
+    }
+    else {
+<span class="fc" id="L41">      this.previousService = previousService;</span>
+    }
+<span class="fc" id="L43">  }</span>
+
+  public double calculatePrice() throws IllegalStateException{
+    double price;
+
+<span class="fc bfc" id="L48" title="All 4 branches covered.">    switch(getPropertySize()) {</span>
+      case SMALL:
+<span class="fc" id="L50">        price = PRICE_PER_HR;</span>
+<span class="fc" id="L51">        break;</span>
+      case MEDIUM:
+<span class="fc" id="L53">        price = PRICE_PER_HR * MED_HR;</span>
+<span class="fc" id="L54">        break;</span>
+      case LARGE:
+<span class="fc" id="L56">        price = PRICE_PER_HR * LARGE_HR;</span>
+<span class="fc" id="L57">        break;</span>
+      default:
+<span class="fc" id="L59">        throw new IllegalStateException(&quot;Invalid property size: &quot; + getPropertySize());</span>
+    }
+<span class="fc" id="L61">    return price;</span>
+  }
+  /**
+   * Check if the integer is negative.
+   * @param num - an Integer.
+   * @return true if the integer is negative, false otherwise.
+   */
+  boolean isNegative(Integer num) {
+<span class="fc bfc" id="L69" title="All 2 branches covered.">    return num &lt; ZERO;</span>
+  }
+
+  /**
+   * Calculates the discount if it can be applied for monthly service discount or tenth service
+   * discount.
+   * @param price - total price.
+   * @return - discounted price.
+   */
+  public double giveDiscount(double price) {
+<span class="fc bfc" id="L79" title="All 2 branches covered.">    if (this.previousService % TENTH == NINE) {</span>
+<span class="fc" id="L80">      price = tenthDiscount(price);</span>
+    }
+<span class="fc bfc" id="L82" title="All 2 branches covered.">    else if (isMonthly()) {</span>
+<span class="fc" id="L83">      price = monthlyDiscount(price);</span>
+    }
+<span class="fc" id="L85">    return roundPrice(price);</span>
+  }
+
+  /**
+   * Help method to round the double to decimal.
+   * @param price - service price.
+   * @return - rounded price.
+   */
+  private double roundPrice(double price) {
+<span class="fc" id="L94">    Integer HUNDRED = 100;</span>
+<span class="fc" id="L95">    price = price * HUNDRED;</span>
+<span class="fc" id="L96">    price = Math.round(price);</span>
+<span class="fc" id="L97">    return price / HUNDRED;</span>
+  }
+
+  /**
+   * Help function - calculates tenth discount.
+   * @param price - service price.
+   * @return half price if service time is a tenth service.
+   */
+  private double tenthDiscount(double price) {
+<span class="fc" id="L106">    Integer HALF = 2;</span>
+<span class="fc" id="L107">    return price / HALF;</span>
+  }
+
+  /**
+   * Help function - calculates monthly service discount.
+   * @param price - service price.
+   * @return - the monthly discount which is 9%.
+   */
+  private double monthlyDiscount(double price) {
+<span class="fc" id="L116">    return price - price * MONTHLY_DIS;</span>
+  }
+
+  /**
+   * Get property size.
+   * @return property size.
+   */
+  public PropertySize getPropertySize() {
+<span class="fc" id="L124">    return this.size;</span>
+  }
+
+  /**
+   * Check if the service is a monthly service.
+   * @return true if it's monthly service, false otherwise.
+   */
+  public boolean isMonthly() {
+<span class="fc" id="L132">    return this.monthly;</span>
+  }
+
+  /**
+   * Get invoice ID.
+   * @return invoice ID.
+   */
+  public String getInvoiceID() {
+<span class="fc" id="L140">    return this.invoiceID;</span>
+  }
+
+  /**
+   * Get address.
+   * @return service address.
+   */
+  public String getAddress() {
+<span class="fc" id="L148">    return this.address;</span>
+  }
+
+  /**
+   * Get previous service number.
+   * @return previous service number.
+   */
+  public Integer getPreviousService() {
+<span class="fc" id="L156">    return this.previousService;</span>
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+<span class="fc bfc" id="L161" title="All 2 branches covered.">    if (this == obj) {</span>
+<span class="fc" id="L162">      return true;</span>
+    }
+<span class="pc bpc" id="L164" title="2 of 4 branches missed.">    if (obj == null || getClass() != obj.getClass()) {</span>
+<span class="nc" id="L165">      return false;</span>
+    }
+<span class="fc" id="L167">    AbstractServices that = (AbstractServices) obj;</span>
+<span class="pc bpc" id="L168" title="2 of 10 branches missed.">    return this.invoiceID == that.invoiceID</span>
+        &amp;&amp; this.address == that.address
+        &amp;&amp; this.size == that.size
+        &amp;&amp; this.monthly == that.monthly
+        &amp;&amp; this.previousService == that.previousService;
+  }
+
+  @Override
+  public int hashCode() {
+<span class="fc" id="L177">    return Objects.hash(this.invoiceID, this.address, this.size, this.monthly,</span>
+        this.previousService);
+  }
+
+  @Override
+  public String toString() {
+<span class="fc" id="L183">    return String.format(&quot;invoice=%s address='%s' size=%s is monthly=%b serviced=%d&quot;,</span>
+<span class="fc" id="L184">        this.invoiceID, this.address, this.size, this.monthly, this.previousService);</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

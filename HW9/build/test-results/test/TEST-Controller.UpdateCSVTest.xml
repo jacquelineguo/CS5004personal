@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Controller.UpdateCSVTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-04-23T12:44:56" hostname="Jacquelines-MacBook-Pro.local" time="0.004">
+  <properties/>
+  <testcase name="testToString" classname="Controller.UpdateCSVTest" time="0.001"/>
+  <testcase name="update" classname="Controller.UpdateCSVTest" time="0.002"/>
+  <testcase name="testHashCode" classname="Controller.UpdateCSVTest" time="0.001"/>
+  <testcase name="testEquals" classname="Controller.UpdateCSVTest" time="0.0"/>
+  <system-out><![CDATA[Deletion successful.
+]]></system-out>
+  <system-err><![CDATA[Failed to parse input using first pattern
+Failed to parse input using third pattern
+Failed to parse input using first pattern
+Failed to parse input using third pattern
+Failed to parse input using first pattern
+Failed to parse input using third pattern
+Failed to parse input using first pattern
+Failed to parse input using third pattern
+]]></system-err>
+</testsuite>

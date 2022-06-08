@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Room.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment2</a> &gt; <a href="index.source.html" class="el_package">Problem1</a> &gt; <span class="el_source">Room.java</span></div><h1>Room.java</h1><pre class="source lang-java linenums">package Problem1;
+
+/**
+ * A Room class representing a hotel room booking system that has 3 type of rooms to book.
+ */
+public class Room {
+  private int maxOccupancy;
+  private double price;
+<span class="fc" id="L9">  private int currGuestNum = 0;</span>
+
+  private static final int EMPTY = 0;
+
+  /**
+   * Constructor of Room class
+   * @param price - the room booking price.
+   * @param currGuestNum - the current guest number of the room.
+   * @param maxOccupancy - the maximum occupancy of the room
+   * @throws InvalidPriceException if the price is smaller than 1.
+   */
+  public Room(double price, int currGuestNum, int maxOccupancy) throws
+<span class="fc" id="L21">      InvalidPriceException{</span>
+<span class="fc" id="L22">    this.currGuestNum = currGuestNum;</span>
+<span class="fc" id="L23">    this.maxOccupancy = maxOccupancy;</span>
+<span class="fc bfc" id="L24" title="All 2 branches covered.">    if (isValidPrice(price)) {</span>
+<span class="fc" id="L25">      this.price = price;</span>
+    }
+    else {
+<span class="fc" id="L28">      throw new InvalidPriceException();</span>
+    }
+<span class="fc" id="L30">  }</span>
+
+  /**
+   * Gets the max room occupancy.
+   * @return the max room occupancy.
+   */
+  public int getMaxOccupancy(){
+<span class="fc" id="L37">    return this.maxOccupancy;</span>
+  }
+
+  /**
+   * Gets the room price.
+   * @return the room price.
+   */
+  public double getPrice() {
+<span class="fc" id="L45">    return this.price;</span>
+  }
+
+  /**
+   * Gets the number of guests.
+   * @return the number of guests.
+   */
+  public int getCurrGuestNum(){
+<span class="fc" id="L53">    return this.currGuestNum;</span>
+  }
+
+  /**
+   * Check if the price is valid.
+   * @param price - the booking price.
+   * @return True if the price is larger than 0, false otherwise.
+   */
+  private boolean isValidPrice(double price) {
+<span class="fc bfc" id="L62" title="All 2 branches covered.">    return price &gt; EMPTY;</span>
+  }
+
+  /**
+   * Check if the room is available for check in.
+   * @param currGuestNum - current number of guests in the room.
+   * @return True if the room is empty, false otherwise.
+   */
+  public boolean isAvailable(int currGuestNum) {
+<span class="fc bfc" id="L71" title="All 2 branches covered.">    return currGuestNum == EMPTY;</span>
+  }
+
+  /**
+   * Book room if the room is available and the guest number is smaller and equal to the occupancy.
+   * @param incomingGuestNum - the guest number.
+   * @throws InvalidRmNumException if either of the condition failed.
+   */
+  public void bookRoom(int incomingGuestNum) throws InvalidRmNumException {
+<span class="fc bfc" id="L80" title="All 4 branches covered.">    if (isAvailable(this.currGuestNum) &amp;&amp; incomingGuestNum &lt;= this.maxOccupancy) {</span>
+<span class="fc" id="L81">        this.currGuestNum = incomingGuestNum;</span>
+    } else {
+<span class="fc" id="L83">      throw new InvalidRmNumException();</span>
+    }
+<span class="fc" id="L85">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

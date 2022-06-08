@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Problem1.ActorTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2021-02-13T20:22:30" hostname="Jacquelines-MacBook-Pro.local" time="0.004">
+  <properties/>
+  <testcase name="invalidAge" classname="Problem1.ActorTest" time="0.001"/>
+  <testcase name="getAge" classname="Problem1.ActorTest" time="0.0"/>
+  <testcase name="testToString" classname="Problem1.ActorTest" time="0.0"/>
+  <testcase name="receiveAward" classname="Problem1.ActorTest" time="0.0"/>
+  <testcase name="getName" classname="Problem1.ActorTest" time="0.0"/>
+  <testcase name="getAwards" classname="Problem1.ActorTest" time="0.0"/>
+  <testcase name="getGenres" classname="Problem1.ActorTest" time="0.0"/>
+  <testcase name="getMovies" classname="Problem1.ActorTest" time="0.0"/>
+  <testcase name="getSeries" classname="Problem1.ActorTest" time="0.001"/>
+  <testcase name="testHashCode" classname="Problem1.ActorTest" time="0.0"/>
+  <testcase name="getMultimedia" classname="Problem1.ActorTest" time="0.0"/>
+  <testcase name="testEquals" classname="Problem1.ActorTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

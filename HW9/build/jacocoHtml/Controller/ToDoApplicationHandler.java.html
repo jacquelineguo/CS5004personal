@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ToDoApplicationHandler.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">HW9</a> &gt; <a href="index.source.html" class="el_package">Controller</a> &gt; <span class="el_source">ToDoApplicationHandler.java</span></div><h1>ToDoApplicationHandler.java</h1><pre class="source lang-java linenums">package Controller;
+
+import static Controller.Commands.INDEX_TWO;
+import static Controller.Commands.INDEX_SEVEN;
+import Model.ToDo;
+import Model.ToDoList;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+
+/**
+ * ToDoApplicationHandler handles all the request from commands passed by user.
+ */
+public class ToDoApplicationHandler implements IApplicationHandler{
+  private CommandLineParser parser;
+  private ToDoList collection;
+  private static final int ID_OFFSET = 1;
+
+  /**
+   * Constructor for ToDoApplicationHandler.
+   * @param parser - command line passer.
+   * @param collection - the ToDo collection.
+   */
+<span class="fc" id="L29">  public ToDoApplicationHandler(CommandLineParser parser, ToDoList collection) {</span>
+<span class="fc" id="L30">    this.parser = parser;</span>
+<span class="fc" id="L31">    this.collection = collection;</span>
+<span class="fc" id="L32">  }</span>
+
+  /**
+   * The function has three parts to make action which are add a new ToDo, mark a ToDo as completed
+   * by finding the ToDo using ID, and display ToDo by different conditions.
+   * Conditions could be:
+   * 1. Display incomplete ToDo.
+   * 2. Display by different ToDo category.
+   * 3. Display by different order of a specific parameter.
+   */
+  public void makeAction() {
+<span class="fc bfc" id="L43" title="All 2 branches covered.">    if (this.containAddCommand()) {</span>
+<span class="fc" id="L44">      ToDo newToDo = new ToDo.Builder(this.getAddParameters()).Build();</span>
+<span class="fc" id="L45">      this.collection.addToDo(newToDo);</span>
+    }
+<span class="fc bfc" id="L47" title="All 2 branches covered.">    if (this.containMarkComplete()) {</span>
+<span class="fc" id="L48">      this.updateCompletedStatus(Integer.parseInt(</span>
+<span class="fc" id="L49">          this.parser.getParameters().get(Commands.COMPLETE_TODO.substring(INDEX_TWO))));</span>
+    }
+<span class="fc bfc" id="L51" title="All 2 branches covered.">    if (this.containDisplay()) {</span>
+<span class="fc" id="L52">      this.display();</span>
+    }
+<span class="fc" id="L54">  }</span>
+
+  /**
+   * Helper method helps display the ToDo collection by different conditions.
+   * Conditions could be:
+   * 1. Display incomplete ToDo.
+   * 2. Display by different ToDo category.
+   * 3. Display by different order of a specific parameter.
+   */
+  private void display() {
+<span class="fc" id="L64">    List&lt;ToDo&gt; output = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L65" title="All 2 branches covered.">    if (this.displayIncomplete()) {</span>
+<span class="fc" id="L66">      output = this.collection.filter(Commands.SHOW_INCOMPLETE, null);</span>
+    }
+<span class="fc bfc" id="L68" title="All 2 branches covered.">    else if (this.displayByCategory()) {</span>
+<span class="fc" id="L69">      output = this.collection.filter(Commands.SHOW_CATEGORY.substring(INDEX_TWO),</span>
+<span class="fc" id="L70">          this.parser.getParameters().get(Commands.SHOW_CATEGORY.substring(INDEX_TWO)));</span>
+    }
+<span class="fc bfc" id="L72" title="All 2 branches covered.">    else if (this.findSort() != null) {</span>
+<span class="fc" id="L73">      output = this.sort(this.collection, Objects.requireNonNull(this.findSort()));</span>
+    }
+    else {
+<span class="fc" id="L76">      output = this.collection.getToDoList();</span>
+    }
+<span class="fc" id="L78">    this.displayList(output);</span>
+<span class="fc" id="L79">  }</span>
+
+  /**
+   * Helper method which helps to sort a list and return it as a new list.
+   * @param list - the list needs to be sort.
+   * @param condition - sort condition.
+   * @return a sorted new list.
+   */
+  private List&lt;ToDo&gt; sort(ToDoList list, String condition) {
+<span class="fc" id="L88">    List&lt;ToDo&gt; temp = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L89">    temp = list.getToDoList();</span>
+<span class="fc bfc" id="L90" title="All 2 branches covered.">    if (condition.equals(Commands.SORT_BY_DATE)) {</span>
+<span class="fc" id="L91">      Collections.sort(temp, Comparator.nullsLast(</span>
+<span class="fc" id="L92">          Comparator.comparing(</span>
+<span class="fc" id="L93">              ToDo::getDue, Comparator.nullsLast(Comparator.naturalOrder()))));</span>
+    }
+<span class="fc bfc" id="L95" title="All 2 branches covered.">    if (condition.equals(Commands.SORT_BY_PRIORITY)) {</span>
+<span class="fc" id="L96">      Collections.sort(temp, Comparator.nullsLast(</span>
+<span class="fc" id="L97">          Comparator.comparing(</span>
+<span class="fc" id="L98">              ToDo::getPriority, Comparator.nullsLast(Comparator.naturalOrder()))));</span>
+    }
+<span class="fc" id="L100">    return temp;</span>
+  }
+
+  /**
+   * Helper method which helps update the ToDo complete status as completed according to ID.
+   * @param id - ToDo ID.
+   */
+  private void updateCompletedStatus(Integer id) {
+<span class="fc bfc" id="L108" title="All 2 branches covered.">    for (ToDo todo: this.collection.getToDoList()) {</span>
+<span class="fc bfc" id="L109" title="All 2 branches covered.">      if (todo.getID() == id) {</span>
+<span class="fc" id="L110">        todo.setCompleted();</span>
+      }
+<span class="fc" id="L112">    }</span>
+<span class="fc" id="L113">  }</span>
+
+  /**
+   * Helper method which clean up commands from parser.
+   * @return commands only needed by add ToDo.
+   */
+  private Map&lt;String, String&gt; getAddParameters() {
+<span class="fc" id="L120">    List&lt;String&gt; ADD_ACTIONS = Arrays.asList(Commands.TODO_TEXT.substring(INDEX_SEVEN),</span>
+<span class="fc" id="L121">        Commands.COMPLETED.substring(INDEX_TWO), Commands.DUE.substring(INDEX_TWO),</span>
+<span class="fc" id="L122">        Commands.PRIORITY.substring(INDEX_TWO), Commands.CATEGORY.substring(INDEX_TWO));</span>
+<span class="fc" id="L123">    Map&lt;String, String&gt; addActions = new HashMap&lt;&gt;();</span>
+
+<span class="fc bfc" id="L125" title="All 2 branches covered.">    for (String field: this.parser.getParameters().keySet()) {</span>
+<span class="fc bfc" id="L126" title="All 2 branches covered.">      if (ADD_ACTIONS.contains(field)) {</span>
+<span class="fc" id="L127">        addActions.put(field, this.parser.getParameters().get(field));</span>
+      }
+<span class="fc" id="L129">    }</span>
+<span class="pc bpc" id="L130" title="1 of 2 branches missed.">    if (this.parser.getCommands().contains(Commands.COMPLETED.substring(INDEX_TWO))) {</span>
+<span class="nc" id="L131">      addActions.put(Commands.COMPLETED.substring(INDEX_TWO), null);</span>
+    }
+<span class="fc" id="L133">    return addActions;</span>
+  }
+
+  /**
+   * Helper method which helps to check if commands have sort keyword.
+   * @return sort command if found, otherwise return null.
+   */
+  private String findSort() {
+<span class="fc" id="L141">    final String KEY_WORD = &quot;sort&quot;;</span>
+<span class="fc bfc" id="L142" title="All 2 branches covered.">    for (String key: this.parser.getCommands()) {</span>
+<span class="fc bfc" id="L143" title="All 2 branches covered.">      if (key.contains(KEY_WORD)) {</span>
+<span class="fc" id="L144">        return key;</span>
+      }
+<span class="fc" id="L146">    }</span>
+<span class="fc" id="L147">    return null;</span>
+  }
+
+  /**
+   * Helper method which helps check commands contains display incomplete.
+   * @return true if contains, false otherwise.
+   */
+  private boolean displayIncomplete() {
+<span class="fc" id="L155">    return this.parser.getCommands().contains(Commands.SHOW_INCOMPLETE);</span>
+  }
+
+  /**
+   * Helper method which helps check commands contains display by category.
+   * @return true if contains, false otherwise.
+   */
+  private boolean displayByCategory() {
+<span class="fc" id="L163">    return this.parser.getParameters().containsKey(Commands.SHOW_CATEGORY.substring(INDEX_TWO));</span>
+  }
+
+  /**
+   * Helper method which helps check commands contains add ToDo.
+   * @return true if contains, false otherwise.
+   */
+  private boolean containAddCommand() {
+<span class="fc" id="L171">    return this.parser.getCommands().contains(Commands.ADD_TODO);</span>
+  }
+
+  /**
+   * Helper method which helps check commands contains mark complete.
+   * @return true if contains, false otherwise.
+   */
+  private boolean containMarkComplete() {
+<span class="fc" id="L179">    return this.parser.getParameters().containsKey(Commands.COMPLETE_TODO.substring(INDEX_TWO));</span>
+  }
+
+  /**
+   * Helper method which helps check commands contains display.
+   * @return true if contains, false otherwise.
+   */
+  private boolean containDisplay() {
+<span class="fc" id="L187">    return this.parser.getCommands().contains(Commands.DISPLAY);</span>
+  }
+
+  /**
+   * Helper method which helps display a list.
+   */
+  private void displayList(List&lt;ToDo&gt; collection) {
+<span class="fc bfc" id="L194" title="All 2 branches covered.">    for (ToDo todo: collection) {</span>
+<span class="fc" id="L195">      System.out.println(todo);</span>
+<span class="fc" id="L196">    }</span>
+<span class="fc" id="L197">  }</span>
+
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L201" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L202">      return true;</span>
+    }
+<span class="fc bfc" id="L204" title="All 4 branches covered.">    if (o == null || this.getClass() != o.getClass()) {</span>
+<span class="fc" id="L205">      return false;</span>
+    }
+<span class="fc" id="L207">    ToDoApplicationHandler that = (ToDoApplicationHandler) o;</span>
+<span class="pc bpc" id="L208" title="1 of 2 branches missed.">    return Objects.equals(this.parser, that.parser) &amp;&amp; Objects</span>
+<span class="pc bpc" id="L209" title="1 of 2 branches missed.">        .equals(this.collection, that.collection);</span>
+  }
+
+  @Override
+  public int hashCode() {
+<span class="fc" id="L214">    return Objects.hash(this.parser, this.collection);</span>
+  }
+
+  @Override
+  public String toString() {
+<span class="fc" id="L219">    return &quot;ToDoApplicationHandler{&quot; +</span>
+        &quot;parser=&quot; + this.parser +
+        &quot;, collection=&quot; + this.collection +
+        '}';
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

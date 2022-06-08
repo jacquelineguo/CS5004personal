@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Problem2.BagOfWordsTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2021-03-05T14:27:28" hostname="Jacquelines-MacBook-Pro.local" time="0.008">
+  <properties/>
+  <testcase name="testToString" classname="Problem2.BagOfWordsTest" time="0.001"/>
+  <testcase name="contains" classname="Problem2.BagOfWordsTest" time="0.0"/>
+  <testcase name="add" classname="Problem2.BagOfWordsTest" time="0.0"/>
+  <testcase name="size" classname="Problem2.BagOfWordsTest" time="0.0"/>
+  <testcase name="test" classname="Problem2.BagOfWordsTest" time="0.006"/>
+  <testcase name="testHashCode" classname="Problem2.BagOfWordsTest" time="0.001"/>
+  <testcase name="testEquals" classname="Problem2.BagOfWordsTest" time="0.0"/>
+  <testcase name="isEmpty" classname="Problem2.BagOfWordsTest" time="0.0"/>
+  <system-out><![CDATA[BagOfWords{first='ahri', rest=BagOfWords{first='apple', rest=BagOfWords{first='word', rest=null}}}
+BagOfWords{first='ahri', rest=BagOfWords{first='apple', rest=BagOfWords{first='word', rest=null}}}
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

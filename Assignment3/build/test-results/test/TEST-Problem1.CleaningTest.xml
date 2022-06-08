@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Problem1.CleaningTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2021-02-10T09:59:29" hostname="Jacquelines-MacBook-Pro.local" time="0.004">
+  <properties/>
+  <testcase name="getInvoiceID" classname="Problem1.CleaningTest" time="0.0"/>
+  <testcase name="getPreviousService" classname="Problem1.CleaningTest" time="0.0"/>
+  <testcase name="invalidPetNum" classname="Problem1.CleaningTest" time="0.0"/>
+  <testcase name="testToString" classname="Problem1.CleaningTest" time="0.0"/>
+  <testcase name="petCost" classname="Problem1.CleaningTest" time="0.0"/>
+  <testcase name="getAddress" classname="Problem1.CleaningTest" time="0.0"/>
+  <testcase name="invalidPreviousService" classname="Problem1.CleaningTest" time="0.0"/>
+  <testcase name="invalidPropertySize" classname="Problem1.CleaningTest" time="0.0"/>
+  <testcase name="isNegative" classname="Problem1.CleaningTest" time="0.0"/>
+  <testcase name="isMonthly" classname="Problem1.CleaningTest" time="0.0"/>
+  <testcase name="getPropertySize" classname="Problem1.CleaningTest" time="0.0"/>
+  <testcase name="testHashCode" classname="Problem1.CleaningTest" time="0.0"/>
+  <testcase name="testEquals" classname="Problem1.CleaningTest" time="0.0"/>
+  <testcase name="giveDiscount" classname="Problem1.CleaningTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

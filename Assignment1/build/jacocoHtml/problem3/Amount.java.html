@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Amount.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment1</a> &gt; <a href="index.source.html" class="el_package">problem3</a> &gt; <span class="el_source">Amount.java</span></div><h1>Amount.java</h1><pre class="source lang-java linenums">package problem3;
+/**
+ * Amount is a class that has a person's bank account account balance in dollars and cents.
+ */
+
+public class Amount {
+    private int dollars;
+    private int cents;
+
+    /**
+     * Constructor that creates bank account balance in dollars and cents.
+     * @param dollars - dollar amount of the account balance.
+     * @param cents - cents amount of the account balance.
+     */
+
+<span class="fc" id="L16">    public Amount(int dollars, int cents) {</span>
+<span class="fc bfc" id="L17" title="All 2 branches covered.">        if (dollars &lt; 0){</span>
+<span class="fc" id="L18">            dollars = 0;</span>
+        }
+<span class="fc bfc" id="L20" title="All 2 branches covered.">        if (cents &lt; 0) {</span>
+<span class="fc" id="L21">            cents = 0;</span>
+<span class="fc bfc" id="L22" title="All 2 branches covered.">        } else if (cents &gt; 99) {</span>
+<span class="fc" id="L23">            dollars += (cents / 100);</span>
+<span class="fc" id="L24">            cents %= 100;</span>
+        }
+<span class="fc" id="L26">        this.dollars = dollars;</span>
+<span class="fc" id="L27">        this.cents = cents;</span>
+<span class="fc" id="L28">    }</span>
+
+    /**
+     * Add the given amount to the account balance.
+     * @param added - the amount to add.
+     * @return new balance after added.
+     */
+
+    public Amount add(Amount added) {
+        int curCents, addedCents;
+<span class="fc" id="L38">        curCents = this.cents + (this.dollars * 100);</span>
+<span class="fc" id="L39">        addedCents = added.getCents() + (added.getDollars() * 100);</span>
+<span class="fc" id="L40">        int newCents = curCents + addedCents;</span>
+
+<span class="fc" id="L42">        int cents = newCents % 100;</span>
+<span class="fc" id="L43">        int dollars = newCents / 100;</span>
+<span class="fc" id="L44">        return new Amount(dollars, cents);</span>
+    }
+
+    /**
+     * Substract the given amount from the account balance.
+     * @param subtracted - the amount to subtract.
+     * @return new balance after subtracted.
+     */
+
+    public Amount subtract(Amount subtracted) {
+        int curCents, minusCents;
+<span class="fc" id="L55">        curCents = this.cents + (this.dollars * 100);</span>
+<span class="fc" id="L56">        minusCents = subtracted.getCents() + (subtracted.getDollars() * 100);</span>
+<span class="fc" id="L57">        int newCents = curCents - minusCents;</span>
+
+<span class="pc bpc" id="L59" title="1 of 2 branches missed.">        if (newCents &lt; 0) {</span>
+<span class="nc" id="L60">            return new Amount(0, 0);</span>
+        }
+<span class="fc" id="L62">        int cents = newCents % 100;</span>
+<span class="fc" id="L63">        int dollars = newCents / 100;</span>
+<span class="fc" id="L64">        return new Amount(dollars, cents);</span>
+    }
+
+    /**
+     * @return the cents amount.
+     */
+    public int getCents() {
+<span class="fc" id="L71">        return this.cents;</span>
+    }
+
+    /**
+     * @return the dollars amount.
+     */
+    public int getDollars() {
+<span class="fc" id="L78">        return this.dollars;</span>
+    }
+
+    public boolean equals(Object o) {
+<span class="fc bfc" id="L82" title="All 2 branches covered.">        if (this == o) return true;</span>
+<span class="pc bpc" id="L83" title="2 of 4 branches missed.">        if (o == null || getClass() != o.getClass()) return false;</span>
+<span class="fc" id="L84">        Amount amount = (Amount) o;</span>
+<span class="pc bpc" id="L85" title="2 of 4 branches missed.">        return dollars == amount.dollars &amp;&amp;</span>
+                cents == amount.cents;
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

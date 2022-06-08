@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Poet.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">lab4</a> &gt; <a href="index.source.html" class="el_package">Problem1</a> &gt; <span class="el_source">Poet.java</span></div><h1>Poet.java</h1><pre class="source lang-java linenums">package Problem1;
+
+import java.util.Objects;
+
+/**
+ * A Poet class represents a poet.
+ */
+public class Poet extends AbstractArtist{
+  private String publishingCompany;
+  private String lastCollection;
+
+  /**
+   * Constructor of the Poet class.
+   * @param name - an artist's name.
+   * @param age - the artist's age.
+   * @param genres - an Artist’sg genres.
+   * @param awards - all awards that an Artist received.
+   * @param publishingCompany - a Poet’s publishing company.
+   * @param lastCollection - representing the title of the latest published collection of poems.
+   * @throws InvalidAgeException if the age is not in range 0 to 128.
+   */
+  public Poet(String name, Integer age, String[] genres, String[] awards,
+      String publishingCompany, String lastCollection) throws InvalidAgeException {
+<span class="fc" id="L24">    super(name, age, genres, awards);</span>
+
+<span class="fc" id="L26">    this.publishingCompany = publishingCompany;</span>
+<span class="fc" id="L27">    this.lastCollection = lastCollection;</span>
+<span class="fc" id="L28">  }</span>
+
+
+  @Override
+  public int hashCode() {
+<span class="fc" id="L33">    return Objects.hash(super.hashCode(), this.publishingCompany, this.lastCollection);</span>
+  }
+
+  @Override
+  public String toString() {
+<span class="fc" id="L38">    return &quot;Poet: &quot; + super.toString() +</span>
+        &quot;, publishingCompany='&quot; + this.publishingCompany + '\'' +
+        &quot;, lastCollection='&quot; + this.lastCollection + '\'' +
+        '}';
+  }
+
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L46" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L47">      return true;</span>
+    }
+<span class="pc bpc" id="L49" title="1 of 2 branches missed.">    if (!(o instanceof Poet)) {</span>
+<span class="nc" id="L50">      return false;</span>
+    }
+<span class="pc bpc" id="L52" title="1 of 2 branches missed.">    if (!super.equals(o)) {</span>
+<span class="nc" id="L53">      return false;</span>
+    }
+<span class="fc" id="L55">    Poet poet = (Poet) o;</span>
+<span class="fc bfc" id="L56" title="All 2 branches covered.">    return Objects.equals(publishingCompany, poet.publishingCompany) &amp;&amp; Objects</span>
+<span class="pc bpc" id="L57" title="1 of 2 branches missed.">        .equals(lastCollection, poet.lastCollection);</span>
+  }
+
+  public String getPublishingCompany() {
+<span class="fc" id="L61">    return this.publishingCompany;</span>
+  }
+
+  public String getLastCollection() {
+<span class="fc" id="L65">    return this.lastCollection;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Time.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment1</a> &gt; <a href="index.source.html" class="el_package">problem2</a> &gt; <span class="el_source">Time.java</span></div><h1>Time.java</h1><pre class="source lang-java linenums">package problem2;
+/**
+ * Time is a class represents the trip time that includes hour, minutes, and seconds.
+ */
+public class Time {
+    private int hour;
+    private int minutes;
+    private int seconds;
+
+    /**
+     * Constructor that creates a validated time.
+     * @param hour - the hour.
+     * @param minutes - the minutes.
+     * @param seconds - the seconds.
+     */
+<span class="fc" id="L16">    public Time (int hour, int minutes, int seconds) {</span>
+<span class="fc" id="L17">        this.hour = Time.validateHour(hour);</span>
+<span class="fc" id="L18">        this.minutes = Time.validateMS(minutes);</span>
+<span class="fc" id="L19">        this.seconds = Time.validateMS(seconds);</span>
+<span class="fc" id="L20">    }</span>
+
+    /**
+     * validateHour valid if hour is between 0 and 23.
+     * If not, return the given number modulo 24
+     * @param hour - the given hour
+     * @return a number in the range (0, 23)
+     */
+    private static int validateHour(int hour) {
+<span class="fc bfc" id="L29" title="All 2 branches covered.">        if (hour &gt;= 0) {</span>
+<span class="fc" id="L30">            return hour % 24;</span>
+        } else {
+<span class="fc" id="L32">            return hour % 24 + 24;</span>
+        }
+    }
+
+    /**
+     * validateMS valid if minutes or seconds is between 0 and 59.
+     * If not, return the given number modulo 60
+     * @param num - the given minute or second
+     * @return a number in the range (0, 59)
+     */
+    private static int validateMS(int num) {
+<span class="fc bfc" id="L43" title="All 2 branches covered.">        if (num &gt;= 0) {</span>
+<span class="fc" id="L44">            return num % 60;</span>
+        } else {
+<span class="fc" id="L46">            return num % 60 + 60;</span>
+        }
+    }
+
+    /**
+     * @return The hour
+     */
+    public int getHour() {
+<span class="fc" id="L54">        return this.hour;</span>
+    }
+
+    /**
+     * @param hour the hour
+     */
+    public void setHour(int hour) {
+<span class="fc" id="L61">        this.hour = validateHour(hour);</span>
+<span class="fc" id="L62">    }</span>
+
+    /**
+     * @return the minute
+     */
+    public int getMinutes() {
+<span class="fc" id="L68">        return this.minutes;</span>
+    }
+
+    /**
+     * @param minute - the minute
+     */
+    public void setMinutes(int minute) {
+<span class="fc" id="L75">        this.minutes = validateMS(minute);</span>
+<span class="fc" id="L76">    }</span>
+
+    /**
+     * @return the second
+     */
+    public int getSeconds() {
+<span class="fc" id="L82">        return this.seconds;</span>
+    }
+
+    /**
+     * @param second - the second
+     */
+    public void setSeconds(int second) {
+<span class="fc" id="L89">        this.seconds = validateMS(second);</span>
+<span class="fc" id="L90">    }</span>
+
+    public boolean equals(Object o) {
+<span class="pc bpc" id="L93" title="1 of 2 branches missed.">        if (this == o) return true;</span>
+<span class="pc bpc" id="L94" title="2 of 4 branches missed.">        if (o == null || getClass() != o.getClass()) return false;</span>
+<span class="fc" id="L95">        Time time = (Time) o;</span>
+<span class="fc bfc" id="L96" title="All 6 branches covered.">        return hour == time.hour &amp;&amp;</span>
+                minutes == time.minutes &amp;&amp;
+                seconds == time.seconds;
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

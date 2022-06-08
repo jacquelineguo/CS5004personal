@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AbstractSpecialist.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment3</a> &gt; <a href="index.source.html" class="el_package">Problem1</a> &gt; <span class="el_source">AbstractSpecialist.java</span></div><h1>AbstractSpecialist.java</h1><pre class="source lang-java linenums">package Problem1;
+
+import java.util.Objects;
+
+/**
+ * Represent all specialist services.
+ */
+public abstract class AbstractSpecialist extends AbstractServices{
+  public Integer licensedEmployee;
+  private boolean complex;
+<span class="fc" id="L11">  private double RATE_PER_EMPLOYEE = 200.0;</span>
+<span class="fc" id="L12">  private static final Integer MIN_EMPLOYEE = 1;</span>
+<span class="fc" id="L13">  private static final Integer COMPLEX_LOWER = 2;</span>
+<span class="fc" id="L14">  private static final Integer COMPLEX_UPPER = 3;</span>
+
+  /**
+   * Constructor for AbstractSpecialist class.
+   * @param invoiceID - invoice ID of the service.
+   * @param address - service address.
+   * @param size - property size which could be small, medium, or large.
+   * @param monthly - is a monthly service.
+   * @param previousService - the previous service the property got.
+   * @param licensedEmployee - licensed employee number needed.
+   * @param complex - if the service is a complex task.
+   */
+  public AbstractSpecialist(String invoiceID, String address, PropertySize size, boolean monthly,
+      Integer previousService, Integer licensedEmployee, boolean complex) {
+<span class="fc" id="L28">    super(invoiceID, address, size, monthly, previousService);</span>
+
+<span class="fc" id="L30">    this.complex = complex;</span>
+
+<span class="fc" id="L32">    this.licensedEmployee = licensedEmployee;</span>
+<span class="fc bfc" id="L33" title="All 2 branches covered.">    if (complex == true) {</span>
+<span class="fc bfc" id="L34" title="All 4 branches covered.">      if (size == PropertySize.SMALL || size == PropertySize.MEDIUM) {</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">        if (licensedEmployee &lt; COMPLEX_LOWER) {</span>
+<span class="fc" id="L36">          this.licensedEmployee = COMPLEX_LOWER;</span>
+        }
+      }
+      else {
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        if (licensedEmployee &lt; COMPLEX_UPPER) {</span>
+<span class="fc" id="L41">          this.licensedEmployee = COMPLEX_UPPER;</span>
+        }
+      }
+    }
+    else {
+<span class="fc bfc" id="L46" title="All 2 branches covered.">      if (licensedEmployee &lt; MIN_EMPLOYEE) {</span>
+<span class="fc" id="L47">        this.licensedEmployee = MIN_EMPLOYEE;</span>
+      }
+    }
+<span class="fc" id="L50">  }</span>
+
+  /**
+   * Get licensed employee number.
+   * @return licensed employee number.
+   */
+  public Integer getLicensedEmployee(){
+<span class="fc" id="L57">    return this.licensedEmployee;</span>
+  }
+
+  /**
+   * Calculates the specialist service price.
+   * @return the specialist service price.
+   */
+  public double calculatePrice() {
+<span class="fc" id="L65">    double price = RATE_PER_EMPLOYEE * this.licensedEmployee;</span>
+<span class="fc" id="L66">    return price;</span>
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+<span class="fc bfc" id="L71" title="All 2 branches covered.">    if (this == obj) {</span>
+<span class="fc" id="L72">      return true;</span>
+    }
+<span class="pc bpc" id="L74" title="1 of 4 branches missed.">    if (obj == null || getClass() != obj.getClass()) {</span>
+<span class="fc" id="L75">      return false;</span>
+    }
+<span class="fc bfc" id="L77" title="All 2 branches covered.">    if (!super.equals(obj)) {</span>
+<span class="fc" id="L78">      return false;</span>
+    }
+<span class="fc" id="L80">    AbstractSpecialist that = (AbstractSpecialist) obj;</span>
+<span class="pc bpc" id="L81" title="1 of 4 branches missed.">    return this.licensedEmployee == that.licensedEmployee</span>
+        &amp;&amp; this.complex == that.complex;
+  }
+
+  @Override
+  public int hashCode() {
+<span class="fc" id="L87">    return Objects.hash(super.hashCode(), this.licensedEmployee, this.complex);</span>
+  }
+
+  @Override
+  public String toString() {
+<span class="fc" id="L92">    return super.toString() + &quot; licensed employee=&quot; + this.licensedEmployee +</span>
+        &quot; is complex=&quot; + this.complex;
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

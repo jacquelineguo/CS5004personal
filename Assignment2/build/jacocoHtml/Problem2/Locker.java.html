@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Locker.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment2</a> &gt; <a href="index.source.html" class="el_package">Problem2</a> &gt; <span class="el_source">Locker.java</span></div><h1>Locker.java</h1><pre class="source lang-java linenums">package Problem2;
+
+/**
+ * The Locker class representing the locker for managing the packages. It contains the info about
+ * the locker's width, height, depth, if it's empty, item to add, and recipient.
+ */
+public class Locker {
+  private int maxWidth;
+  private int maxHeight;
+  private int maxDepth;
+<span class="fc" id="L11">  private Item item = null;</span>
+  private Item newItem;
+  private Recipient recipient;
+  private Recipient pickupPerson;
+  private static final int SIZELIMIT = 1;
+
+  /**
+   * Constructor for Locker class.
+   * @param maxWidth - the locker's width.
+   * @param maxHeight - the locker's height.
+   * @param maxDepth - the locker's depth.
+   * @param item - the original item in the locker, null if it's empty.
+   * @param newItem - the item need to be added to the locker.
+   * @param recipient - the recipient's name.
+   * @throws InvalidSizeDimensionException if the locker's dimension is smaller than 1.
+   */
+  public Locker(int maxWidth, int maxHeight, int maxDepth, Item item, Item newItem,
+<span class="fc" id="L28">      Recipient recipient) throws InvalidSizeDimensionException{</span>
+<span class="fc bfc" id="L29" title="All 2 branches covered.">    if (this.isValidWidth(maxWidth)) {</span>
+<span class="fc" id="L30">      this.maxWidth = maxWidth;</span>
+    }
+    else {
+<span class="fc" id="L33">      throw new InvalidSizeDimensionException();</span>
+    }
+<span class="fc bfc" id="L35" title="All 2 branches covered.">    if (this.isValidHeight(maxHeight)) {</span>
+<span class="fc" id="L36">      this.maxHeight = maxHeight;</span>
+    }
+    else {
+<span class="fc" id="L39">      throw new InvalidSizeDimensionException();</span>
+    }
+<span class="fc bfc" id="L41" title="All 2 branches covered.">    if (this.isValidDepth(maxDepth)) {</span>
+<span class="fc" id="L42">      this.maxDepth = maxDepth;</span>
+    }
+    else {
+<span class="fc" id="L45">      throw new InvalidSizeDimensionException();</span>
+    }
+<span class="fc" id="L47">    this.item = item;</span>
+<span class="fc" id="L48">    this.newItem = newItem;</span>
+<span class="fc" id="L49">    this.recipient = recipient;</span>
+<span class="fc" id="L50">  }</span>
+
+  /**
+   * A helper method to check if the locker's width is smaller than 1.
+   * @param maxWidth - the locker's width.
+   * @return true if it's a valid width, false otherwise.
+   */
+  private boolean isValidWidth(int maxWidth) {
+<span class="fc bfc" id="L58" title="All 2 branches covered.">    return maxWidth &gt;= SIZELIMIT;</span>
+  }
+
+  /**
+   * A helper method to check if the locker's height is smaller than 1.
+   * @param maxHeight - the locker's height.
+   * @return true if it's a valid height, false otherwise.
+   */
+  private boolean isValidHeight(int maxHeight) {
+<span class="fc bfc" id="L67" title="All 2 branches covered.">    return maxHeight &gt;= SIZELIMIT;</span>
+  }
+
+  /**
+   * A helper method to check if the locker's depth is smaller than 1.
+   * @param maxDepth - the locker's depth.
+   * @return true if it's a valid depth, false otherwise.
+   */
+  private boolean isValidDepth(int maxDepth) {
+<span class="fc bfc" id="L76" title="All 2 branches covered.">    return maxDepth &gt;= SIZELIMIT;</span>
+  }
+
+  /**
+   * Get the locker's width.
+   * @return locker's width.
+   */
+  public int getMaxWidth() {
+<span class="fc" id="L84">    return this.maxWidth;</span>
+  }
+
+  /**
+   * Get the locker's height.
+   * @return locker's height.
+   */
+  public int getMaxHeight() {
+<span class="fc" id="L92">    return this.maxHeight;</span>
+  }
+
+  /**
+   * Get the locker's depth.
+   * @return locker's depth.
+   */
+  public int getMaxDepth() {
+<span class="fc" id="L100">    return this.maxDepth;</span>
+  }
+
+  /**
+   * Get the item in the locker's.
+   * @return the item in the locker.
+   */
+  public Item getItem() {
+<span class="fc" id="L108">    return this.item;</span>
+  }
+
+  /**
+   * Get the item needed to be add into the locker's.
+   * @return the item needed to be add into the locker's.
+   */
+  public Item getNewItem() {
+<span class="fc" id="L116">    return this.newItem;</span>
+  }
+
+  /**
+   * A method will add the mail item to the locker.
+   * @throws InvalidLockerOccupiedException if the locker is occupied.
+   * @throws InvalidLockerSizeException if the locker's size is not smaller than the item size.
+   */
+  public void addMail() throws InvalidLockerOccupiedException, InvalidLockerSizeException {
+<span class="fc bfc" id="L125" title="All 2 branches covered.">    if (this.item != null) {</span>
+<span class="fc" id="L126">      throw new InvalidLockerOccupiedException();</span>
+    }
+<span class="fc bfc" id="L128" title="All 4 branches covered.">    else if (newItem.getWidth() &gt; this.maxWidth || newItem.getHeight() &gt; this.maxHeight ||</span>
+<span class="fc bfc" id="L129" title="All 2 branches covered.">    newItem.getDepth() &gt; this.maxDepth) {</span>
+<span class="fc" id="L130">      throw new InvalidLockerSizeException();</span>
+    }
+    else {
+<span class="fc" id="L133">      this.item = this.newItem;</span>
+    }
+<span class="fc" id="L135">  }</span>
+
+  /**
+   * This method will remove and return the mail item from the locker
+   * @param pickupPerson - the recipient who wants to pickup the item.
+   * @return the item from the locker.
+   * @throws InvalidPickupMailException if the locker is empty.
+   * @throws InvalidRecipientException if the recipient name does not match.
+   */
+  public Item pickupMail(Recipient pickupPerson) throws InvalidPickupMailException,
+      InvalidRecipientException {
+<span class="fc bfc" id="L146" title="All 2 branches covered.">    if (this.item == null) {</span>
+<span class="fc" id="L147">      throw new InvalidPickupMailException();</span>
+    }
+<span class="fc bfc" id="L149" title="All 2 branches covered.">    if (!recipient.getName().equals(pickupPerson.getName())) {</span>
+<span class="fc" id="L150">      throw new InvalidRecipientException();</span>
+    }
+    else {
+<span class="fc" id="L153">      Item pickupItem = this.item;</span>
+<span class="fc" id="L154">      this.item = null;</span>
+<span class="fc" id="L155">      return pickupItem;</span>
+    }
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

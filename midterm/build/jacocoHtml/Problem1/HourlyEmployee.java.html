@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HourlyEmployee.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">midterm</a> &gt; <a href="index.source.html" class="el_package">Problem1</a> &gt; <span class="el_source">HourlyEmployee.java</span></div><h1>HourlyEmployee.java</h1><pre class="source lang-java linenums">package Problem1;
+
+import java.time.LocalDate;
+
+public class HourlyEmployee extends AbstractPartTime{
+  private Double hourlyEarnings;
+<span class="nc" id="L7">  private static final Double RATE_BOUND = 15.0;</span>
+<span class="nc" id="L8">  private static final Double HOURLY_BONUS = 2.0;</span>
+
+  public HourlyEmployee(String employeeID, ContactInfo contactInfo,
+      LocalDate employmentDate, EducationLevel educationLevel, EmploymentLevel employmentLevel,
+      Double lastYearEarning, Double contractualWorkingHrs, Double actualWorkingHrs,
+      Double bonusEarnings, Double hourlyEarnings) {
+<span class="nc" id="L14">    super(employeeID, contactInfo, employmentDate, educationLevel, employmentLevel, lastYearEarning,</span>
+        contractualWorkingHrs, actualWorkingHrs, bonusEarnings);
+
+<span class="nc" id="L17">    this.hourlyEarnings = hourlyEarnings;</span>
+<span class="nc" id="L18">  }</span>
+
+  @Override
+  public Double estimateProductivity() {
+<span class="nc" id="L22">    return super.estimateProductivity() + this.hourlyBonus();</span>
+  }
+
+  private Double hourlyBonus() {
+<span class="nc bnc" id="L26" title="All 2 branches missed.">    if (this.hourlyEarnings &lt; RATE_BOUND) {</span>
+<span class="nc" id="L27">      return HOURLY_BONUS;</span>
+    }
+<span class="nc" id="L29">    return NO_BONUS;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

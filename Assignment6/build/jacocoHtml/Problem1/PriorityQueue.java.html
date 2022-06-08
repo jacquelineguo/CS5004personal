@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PriorityQueue.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment6</a> &gt; <a href="index.source.html" class="el_package">Problem1</a> &gt; <span class="el_source">PriorityQueue.java</span></div><h1>PriorityQueue.java</h1><pre class="source lang-java linenums">package Problem1;
+
+import java.util.Objects;
+
+/**
+ * PriorityQueue represents an immutable data structure, where every element of a PQ contains two
+ * properties: a priority (Integer) and a value associated with the priority (String).
+ */
+public class PriorityQueue implements IPriorityQueue{
+
+  private Element first;
+  private PriorityQueue rest;
+
+  /**
+   * Constructor for PriorityQueue class.
+   * @param first - first element of PriorityQueue.
+   * @param rest - rest of PriorityQueue.
+   */
+<span class="fc" id="L19">  public PriorityQueue(Element first, PriorityQueue rest) {</span>
+<span class="fc" id="L20">    this.first = first;</span>
+<span class="fc" id="L21">    this.rest = rest;</span>
+<span class="fc" id="L22">  }</span>
+
+  /**
+   * Helper function that can get the first element of PriorityQueue.
+   * @return the first element of PriorityQueue.
+   */
+  private Element getFirst() {
+<span class="fc" id="L29">    return this.first;</span>
+  }
+
+  /**
+   * Helper function that can get the rest of PriorityQueue.
+   * @return the rest of PriorityQueue.
+   */
+  private PriorityQueue getRest() {
+<span class="fc" id="L37">    return this.rest;</span>
+  }
+
+  /**
+   * Check if the Priority Queue is empty or not.
+   * @return true if it's empty, false otherwise.
+   */
+  @Override
+  public Boolean isEmpty() {
+<span class="fc" id="L46">    return false;</span>
+  }
+
+  /**
+   * Adds the given element (the priority and its associated value) to the PQ.
+   * @param priority - an Integer represents Priority Queue's priority.
+   * @param value - a String represents Priority Queue's value.
+   * @return a new Priority Queue with the added element.
+   */
+  @Override
+  public PriorityQueue add(Integer priority, String value) {
+<span class="fc" id="L57">    Element ele = new Element(priority, value);</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">    if (priority &gt;= this.first.getPriority()) {</span>
+<span class="fc" id="L59">      return new PriorityQueue(ele, this);</span>
+    }
+    else {
+<span class="fc" id="L62">      return new PriorityQueue(this.first, this.rest.add(priority, value));</span>
+    }
+  }
+
+  /**
+   * Find the value in the PQ that has the highest priority. If there are several same highest
+   * priority, then return all values that has the same highest priority.
+   * @return the value in the PQ that has the highest priority.
+   * @throws PeekOnEmptyPQException if the Priority Queue is empty.
+   */
+  @Override
+  public String peek() {
+<span class="fc bfc" id="L74" title="All 4 branches covered.">    if (this.rest != null &amp;&amp; this.rest.getFirst().getPriority() == this.first.getPriority()) {</span>
+<span class="fc" id="L75">      return this.first.getValue() + &quot; | &quot; + this.rest.peek();</span>
+    }
+<span class="fc" id="L77">    return this.first.getValue();</span>
+  }
+
+  /**
+   * Remove the element that has the highest priority. If there are several same highest
+   * priority, then remove them all.
+   * @return a copy of the PQ without the element with the highest priority.
+   * @throws PopOnEmptyPQException if the Priority Queue is empty.
+   */
+  @Override
+  public PriorityQueue pop() {
+<span class="fc bfc" id="L88" title="All 2 branches covered.">    if (this.rest != null) {</span>
+<span class="fc bfc" id="L89" title="All 2 branches covered.">      if (this.rest.getFirst().getPriority() != this.first.getPriority()) {</span>
+<span class="fc" id="L90">        return new PriorityQueue(this.rest.getFirst(), this.rest.getRest());</span>
+      }
+<span class="fc" id="L92">      return this.rest.pop();</span>
+    }
+    else {
+<span class="fc" id="L95">      return null;</span>
+    }
+  }
+
+  @Override
+  public String toString() {
+<span class="fc" id="L101">    return &quot;PriorityQueue{&quot; +</span>
+        &quot;first=&quot; + first +
+        &quot;, rest=&quot; + rest +
+        '}';
+  }
+
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L109" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L110">      return true;</span>
+    }
+<span class="pc bpc" id="L112" title="1 of 4 branches missed.">    if (o == null || this.getClass() != o.getClass()) {</span>
+<span class="fc" id="L113">      return false;</span>
+    }
+<span class="fc" id="L115">    PriorityQueue that = (PriorityQueue) o;</span>
+<span class="fc bfc" id="L116" title="All 2 branches covered.">    return Objects.equals(getFirst(), that.getFirst()) &amp;&amp; Objects</span>
+<span class="pc bpc" id="L117" title="1 of 2 branches missed.">        .equals(getRest(), that.getRest());</span>
+  }
+
+  @Override
+  public int hashCode() {
+<span class="fc" id="L122">    return Objects.hash(getFirst(), getRest());</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

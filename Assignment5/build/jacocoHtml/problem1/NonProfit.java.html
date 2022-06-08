@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>NonProfit.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment5</a> &gt; <a href="index.source.html" class="el_package">problem1</a> &gt; <span class="el_source">NonProfit.java</span></div><h1>NonProfit.java</h1><pre class="source lang-java linenums">package problem1;
+
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.util.List;
+import java.util.Objects;
+
+/**
+ * NonProfit class represents a non-profit organization.
+ */
+public class NonProfit {
+  private String orgName;
+  private List&lt;AbstractDonation&gt; donations;
+
+  /**
+   * Constructor for NonProfit class.
+   * @param orgName - organization name.
+   * @param donations - a collection of organization donations.
+   */
+<span class="fc" id="L20">  public NonProfit(String orgName, List&lt;AbstractDonation&gt; donations) {</span>
+<span class="fc" id="L21">    this.orgName = orgName;</span>
+<span class="fc" id="L22">    this.donations = donations;</span>
+<span class="fc" id="L23">  }</span>
+
+  /**
+   * Get the sum of all donations processed in the specified year.
+   * @param year - year.
+   * @return - the sum of all donations processed in the specified year.
+   */
+  public int getTotalDonationsForYear(int year) {
+<span class="fc" id="L31">    LocalDateTime dueDate = convertYear(year);</span>
+<span class="fc" id="L32">    int totalDonation = 0;</span>
+<span class="fc bfc" id="L33" title="All 2 branches covered.">    for (AbstractDonation donation : this.donations) {</span>
+<span class="fc" id="L34">      totalDonation += donation.getDonation(dueDate);</span>
+<span class="fc" id="L35">    }</span>
+<span class="fc" id="L36">    return totalDonation;</span>
+  }
+
+  /**
+   * Helper function to convert integer year to LocalDateTime.
+   * @param year - year.
+   * @return converted year.
+   */
+  private LocalDateTime convertYear(int year) {
+<span class="fc" id="L45">    LocalDateTime dueDate =</span>
+<span class="fc" id="L46">        LocalDateTime.of(year, Month.DECEMBER, 31,23, 59);</span>
+<span class="fc" id="L47">    return dueDate;</span>
+  }
+
+  /**
+   * Add donation to the donation collection.
+   * @param donation - new donation to be added.
+   */
+  public void receiveDonation(AbstractDonation donation) {
+<span class="fc" id="L55">    this.donations.add(donation);</span>
+<span class="fc" id="L56">  }</span>
+
+  /**
+   * Delete donation from the collection.
+   * @param donation - donation to be deleted.
+   */
+  public void cancelDonation(AbstractDonation donation) {
+<span class="pc bpc" id="L63" title="1 of 2 branches missed.">    if (donation != null) {</span>
+<span class="fc" id="L64">      this.donations.remove(donation);</span>
+    }
+<span class="fc" id="L66">  }</span>
+
+  /**
+   * Get organization name.
+   * @return the organization name.
+   */
+  public String getOrgName() {
+<span class="fc" id="L73">    return this.orgName;</span>
+  }
+
+  /**
+   * Get donation collection.
+   * @return the donation collection.
+   */
+  public List&lt;AbstractDonation&gt; getDonations() {
+<span class="fc" id="L81">    return this.donations;</span>
+  }
+
+  @Override
+  public String toString() {
+<span class="fc" id="L86">    return &quot;NonProfit{&quot; +</span>
+        &quot;orgName='&quot; + orgName + '\'' +
+        &quot;, donations=&quot; + donations +
+        '}';
+  }
+
+  @Override
+  public boolean equals(Object o) {
+<span class="fc bfc" id="L94" title="All 2 branches covered.">    if (this == o) {</span>
+<span class="fc" id="L95">      return true;</span>
+    }
+<span class="pc bpc" id="L97" title="1 of 4 branches missed.">    if (o == null || this.getClass() != o.getClass()) {</span>
+<span class="fc" id="L98">      return false;</span>
+    }
+<span class="fc" id="L100">    NonProfit nonProfit = (NonProfit) o;</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">    return this.getOrgName() == nonProfit.getOrgName() &amp;&amp;</span>
+<span class="fc bfc" id="L102" title="All 2 branches covered.">        this.donations.equals(nonProfit.getDonations());</span>
+  }
+
+  @Override
+  public int hashCode() {
+<span class="fc" id="L107">    return Objects.hash(orgName, donations);</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

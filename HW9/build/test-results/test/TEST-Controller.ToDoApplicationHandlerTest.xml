@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Controller.ToDoApplicationHandlerTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2021-04-23T12:44:56" hostname="Jacquelines-MacBook-Pro.local" time="0.035">
+  <properties/>
+  <testcase name="testToDoListEquals" classname="Controller.ToDoApplicationHandlerTest" time="0.018"/>
+  <testcase name="testSortByDate" classname="Controller.ToDoApplicationHandlerTest" time="0.004"/>
+  <testcase name="testAddToDo" classname="Controller.ToDoApplicationHandlerTest" time="0.002"/>
+  <testcase name="testToDoListHashCode" classname="Controller.ToDoApplicationHandlerTest" time="0.002"/>
+  <testcase name="testToString" classname="Controller.ToDoApplicationHandlerTest" time="0.001"/>
+  <testcase name="testShowIncomplete" classname="Controller.ToDoApplicationHandlerTest" time="0.002"/>
+  <testcase name="testShowCategory" classname="Controller.ToDoApplicationHandlerTest" time="0.002"/>
+  <testcase name="testHashCode" classname="Controller.ToDoApplicationHandlerTest" time="0.001"/>
+  <testcase name="testSortByPriority" classname="Controller.ToDoApplicationHandlerTest" time="0.002"/>
+  <testcase name="testEquals" classname="Controller.ToDoApplicationHandlerTest" time="0.001"/>
+  <system-out><![CDATA[ToDo{id=2, text='Mail passport', completed=true, due=2020-02-28, priority=null, category='null'}
+ToDo{id=1, text='Finish HW9', completed=false, due=2020-03-22, priority=1, category='school'}
+ToDo{id=4, text='Clean the house', completed=false, due=2020-03-22, priority=3, category='home'}
+ToDo{id=3, text='Study for finals', completed=false, due=null, priority=2, category='school'}
+ToDo{id=5, text='Buy yarn for blanket, stuffed toy', completed=true, due=null, priority=null, category='home'}
+ToDo{id=1, text='Finish HW9', completed=false, due=2020-03-22, priority=1, category='school'}
+ToDo{id=2, text='Mail passport', completed=true, due=2020-02-28, priority=null, category='null'}
+ToDo{id=3, text='Study for finals', completed=false, due=null, priority=2, category='school'}
+ToDo{id=4, text='Clean the house', completed=true, due=2020-03-22, priority=3, category='home'}
+ToDo{id=5, text='Buy yarn for blanket, stuffed toy', completed=true, due=null, priority=null, category='home'}
+ToDo{id=6, text='null', completed=false, due=2025-07-22, priority=2, category='school'}
+ToDo{id=1, text='Finish HW9', completed=false, due=2020-03-22, priority=1, category='school'}
+ToDo{id=3, text='Study for finals', completed=false, due=null, priority=2, category='school'}
+ToDo{id=4, text='Clean the house', completed=false, due=2020-03-22, priority=3, category='home'}
+ToDo{id=1, text='Finish HW9', completed=false, due=2020-03-22, priority=1, category='school'}
+ToDo{id=3, text='Study for finals', completed=false, due=null, priority=2, category='school'}
+ToDo{id=1, text='Finish HW9', completed=false, due=2020-03-22, priority=1, category='school'}
+ToDo{id=3, text='Study for finals', completed=false, due=null, priority=2, category='school'}
+ToDo{id=4, text='Clean the house', completed=false, due=2020-03-22, priority=3, category='home'}
+ToDo{id=2, text='Mail passport', completed=true, due=2020-02-28, priority=null, category='null'}
+ToDo{id=5, text='Buy yarn for blanket, stuffed toy', completed=true, due=null, priority=null, category='home'}
+]]></system-out>
+  <system-err><![CDATA[Failed to parse input using first pattern
+Failed to parse input using third pattern
+Failed to parse input using first pattern
+Failed to parse input using third pattern
+Failed to parse input using first pattern
+Failed to parse input using third pattern
+Failed to parse input using first pattern
+Failed to parse input using third pattern
+Failed to parse input using first pattern
+Failed to parse input using third pattern
+Failed to parse input using first pattern
+Failed to parse input using third pattern
+Failed to parse input using first pattern
+Failed to parse input using third pattern
+Failed to parse input using first pattern
+Failed to parse input using third pattern
+Failed to parse input using first pattern
+Failed to parse input using third pattern
+Failed to parse input using first pattern
+Failed to parse input using third pattern
+Failed to parse input using first pattern
+Failed to parse input using third pattern
+Failed to parse input using first pattern
+Failed to parse input using third pattern
+Failed to parse input using first pattern
+Failed to parse input using third pattern
+Failed to parse input using first pattern
+Failed to parse input using third pattern
+Failed to parse input using first pattern
+Failed to parse input using third pattern
+Failed to parse input using first pattern
+Failed to parse input using third pattern
+Failed to parse input using first pattern
+Failed to parse input using third pattern
+Failed to parse input using first pattern
+Failed to parse input using third pattern
+Failed to parse input using first pattern
+Failed to parse input using third pattern
+Failed to parse input using first pattern
+Failed to parse input using third pattern
+Failed to parse input using first pattern
+Failed to parse input using third pattern
+Failed to parse input using first pattern
+Failed to parse input using third pattern
+Failed to parse input using first pattern
+Failed to parse input using third pattern
+Failed to parse input using first pattern
+Failed to parse input using third pattern
+Failed to parse input using first pattern
+Failed to parse input using third pattern
+Failed to parse input using first pattern
+Failed to parse input using third pattern
+Failed to parse input using first pattern
+Failed to parse input using third pattern
+Failed to parse input using first pattern
+Failed to parse input using third pattern
+Failed to parse input using first pattern
+Failed to parse input using third pattern
+Failed to parse input using first pattern
+Failed to parse input using third pattern
+]]></system-err>
+</testsuite>

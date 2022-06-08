@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.26.0" timestamp="2021-04-23T05:44:58.414">
+<file name="/Users/jacquelineguo/Documents/Northeastern University/Spring 2021/CS 5004/Group_Xuan_Guo_Ruiqi_Yang_Zidi_Xia/HW9/src/test/java/Controller/CommandLineParserTest.java">
+<violation beginline="45" endline="45" begincolumn="9" endcolumn="26" rule="SystemPrintln" ruleset="Best Practices" package="Controller" class="CommandLineParserTest" method="getParameters" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_bestpractices.html#systemprintln" priority="2">
+System.out.println is used
+</violation>
+<violation beginline="47" endline="47" begincolumn="9" endcolumn="26" rule="SystemPrintln" ruleset="Best Practices" package="Controller" class="CommandLineParserTest" method="getParameters" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_bestpractices.html#systemprintln" priority="2">
+System.out.println is used
+</violation>
+</file>
+</pmd>

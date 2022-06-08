@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Model.TheaterTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2021-04-30T10:31:38" hostname="Jacquelines-MacBook-Pro.local" time="0.003">
+  <properties/>
+  <testcase name="getRowList" classname="Model.TheaterTest" time="0.001"/>
+  <testcase name="testToString" classname="Model.TheaterTest" time="0.0"/>
+  <testcase name="invalidRows" classname="Model.TheaterTest" time="0.0"/>
+  <testcase name="generateTheater" classname="Model.TheaterTest" time="0.0"/>
+  <testcase name="rowOutOfBound" classname="Model.TheaterTest" time="0.001"/>
+  <testcase name="getTheaterName" classname="Model.TheaterTest" time="0.0"/>
+  <testcase name="invalidWCRow" classname="Model.TheaterTest" time="0.0"/>
+  <testcase name="outOfBoundWCRow" classname="Model.TheaterTest" time="0.0"/>
+  <testcase name="testHashCode" classname="Model.TheaterTest" time="0.001"/>
+  <testcase name="testEquals" classname="Model.TheaterTest" time="0.0"/>
+  <testcase name="getWheelChairRows" classname="Model.TheaterTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

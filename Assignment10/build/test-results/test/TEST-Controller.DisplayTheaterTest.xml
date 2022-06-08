@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Controller.DisplayTheaterTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-30T10:31:38" hostname="Jacquelines-MacBook-Pro.local" time="0.005">
+  <properties/>
+  <testcase name="displayTheater" classname="Controller.DisplayTheaterTest" time="0.005"/>
+  <system-out><![CDATA[1  _  _  _  _  _  _  _  _  _  _ 
+2  =  =  =  =  =  =  =  =  =  = 
+3  _  _  _  _  _  _  _  _  _  _ 
+4  _  _  _  _  _  _  _  _  _  _ 
+5  =  =  =  =  =  =  =  =  =  = 
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

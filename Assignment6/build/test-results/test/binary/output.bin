@@ -1,0 +1,2 @@
+cBagOfWords{first='ahri', rest=BagOfWords{first='apple', rest=BagOfWords{first='word', rest=null}}}
+cBagOfWords{first='ahri', rest=BagOfWords{first='apple', rest=BagOfWords{first='word', rest=null}}}

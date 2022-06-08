@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.26.0" timestamp="2021-02-18T20:57:57.762">
+<file name="/Users/jacquelineguo/Documents/Northeastern University/Spring 2021/CS 5004/Xuan_Guo_repository/Assignment4/src/test/java/Problem1/CourseCatalogsTest.java">
+<violation beginline="106" endline="106" begincolumn="17" endcolumn="34" rule="EqualsNull" ruleset="Error Prone" package="Problem1" class="CourseCatalogsTest" method="testEquals" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#equalsnull" priority="1">
+Avoid using equals() to compare against null
+</violation>
+</file>
+<file name="/Users/jacquelineguo/Documents/Northeastern University/Spring 2021/CS 5004/Xuan_Guo_repository/Assignment4/src/test/java/Problem2/SetTest.java">
+<violation beginline="85" endline="85" begincolumn="17" endcolumn="33" rule="EqualsNull" ruleset="Error Prone" package="Problem2" class="SetTest" method="testEquals" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#equalsnull" priority="1">
+Avoid using equals() to compare against null
+</violation>
+</file>
+</pmd>

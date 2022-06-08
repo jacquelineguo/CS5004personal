@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DisplayTheater.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment10</a> &gt; <a href="index.source.html" class="el_package">Controller</a> &gt; <span class="el_source">DisplayTheater.java</span></div><h1>DisplayTheater.java</h1><pre class="source lang-java linenums">package Controller;
+
+import Model.Row;
+import Model.Seat;
+import Model.Theater;
+
+/**
+ * DisplayTheater class can help display the seats in the theater.
+ */
+<span class="nc" id="L10">public class DisplayTheater {</span>
+  private static final String OCCUPIED_SEAT = &quot;X&quot;;
+  private static final String WHEELCHAIR_SEAT = &quot;=&quot;;
+  private static final String SEAT = &quot;_&quot;;
+  private static final String SPACE = &quot; &quot;;
+
+  /**
+   * Display the seats in the theater.
+   * @param theater - the theater to display.
+   */
+  public static void displayTheater(Theater theater) {
+<span class="fc bfc" id="L21" title="All 2 branches covered.">    for (Row row: theater.getRowList()) {</span>
+<span class="fc" id="L22">      displayRows(row);</span>
+<span class="fc" id="L23">    }</span>
+<span class="fc" id="L24">  }</span>
+
+  /**
+   * Helper method to help display rows in the theater.
+   * @param row - rows in the theater.
+   */
+  private static void displayRows(Row row) {
+    String symbol;
+<span class="fc" id="L32">    System.out.print(row.getRowNum() + SPACE);</span>
+<span class="fc bfc" id="L33" title="All 2 branches covered.">    if (row.getWheelchair()) {</span>
+<span class="fc" id="L34">      symbol = WHEELCHAIR_SEAT;</span>
+    } else {
+<span class="fc" id="L36">      symbol = SEAT;</span>
+    }
+<span class="fc bfc" id="L38" title="All 2 branches covered.">    for (Seat seat: row) {</span>
+<span class="fc" id="L39">      displaySeats(seat, symbol);</span>
+<span class="fc" id="L40">    }</span>
+<span class="fc" id="L41">    System.out.println();</span>
+<span class="fc" id="L42">  }</span>
+
+  /**
+   * Helper method to display seats in the row.
+   * @param seat - seats in the row.
+   * @param symbol - seats symbol, if it's a normal seats, the symbol is &quot;_&quot;, if it's a wheelchair
+   *               seat, the symbol is &quot;=&quot;.
+   */
+  private static void displaySeats(Seat seat, String symbol) {
+<span class="pc bpc" id="L51" title="1 of 2 branches missed.">    if (seat.getCustomerName() != null) {</span>
+<span class="nc" id="L52">      System.out.print(SPACE + OCCUPIED_SEAT + SPACE);</span>
+    } else {
+<span class="fc" id="L54">      System.out.print(SPACE + symbol + SPACE);</span>
+    }
+<span class="fc" id="L56">  }</span>
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>
